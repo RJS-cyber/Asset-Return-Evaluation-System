@@ -1,5 +1,5 @@
 target/
-!.mvn/wrapper/maven-wrapper.jar
+!backend/.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
@@ -13,7 +13,7 @@ target/
 *.ipr
 
 ### config ###
-instruction.md
+instructions/
 
 ### Eclipse ###
 .apt_generated

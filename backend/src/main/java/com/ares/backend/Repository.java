@@ -8,7 +8,7 @@ import com.ares.backend.model.Stocks;
 
 import java.util.*;
 
-public class Systemrepository {
+public class Repository {
     private final List<Asset> assets = new ArrayList<>();
 
     public List<Asset> getAssets() {
@@ -28,6 +28,4 @@ public class Systemrepository {
             default -> throw new IllegalArgumentException("Unknown AssetType: " + type);
         }
     }
-
-
 }

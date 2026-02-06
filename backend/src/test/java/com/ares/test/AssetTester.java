@@ -1,6 +1,6 @@
 package com.ares.test;
 
-import com.ares.backend.Systemrepository;
+import com.ares.backend.Repository;
 import com.ares.backend.model.Asset;
 import org.junit.jupiter.api.Test;
 
@@ -9,14 +9,14 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class AssetTester {
 
-    Systemrepository systemrepository = new Systemrepository();
+    Repository repository = new Repository();
 
     @Test
     void testCreateAssetByType(){
-        systemrepository.createAssetByType(com.ares.backend.AssetType.BONDS, 1000f, 5f, 2f, 1f);
-        assertEquals(1, systemrepository.getAssets().size());
+        repository.createAssetByType(com.ares.backend.AssetType.BONDS, 1000f, 5f, 2f, 1f);
+        assertEquals(1, repository.getAssets().size());
 
-        Asset bonds = systemrepository.getAssets().get(0);
+        Asset bonds = repository.getAssets().get(0);
         assertEquals(com.ares.backend.AssetType.BONDS, bonds.getType());
         assertEquals(1000f, bonds.getStartcapital());
         assertEquals(5f, bonds.getInterest());
@@ -28,7 +28,7 @@ public class AssetTester {
     @Test
     void testCreateAssetByTypeInvalid(){
         assertThrows(IllegalArgumentException.class, () -> {
-            systemrepository.createAssetByType(null, 1000f, 5f, 2f, 1f);
+            repository.createAssetByType(null, 1000f, 5f, 2f, 1f);
         });
 
         /* // Cannot define a new enum value at runtime in Java

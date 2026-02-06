@@ -1,5 +1,5 @@
 package com.ares.backend;
 
-public class Systemcontroller {
+public class Controller {
 }
 // HTTP receiver

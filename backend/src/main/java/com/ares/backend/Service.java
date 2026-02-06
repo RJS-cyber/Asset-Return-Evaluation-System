@@ -1,6 +1,6 @@
 package com.ares.backend;
 
-public class Systemservice {
+public class Service {
     // decision-making
 
 }

@@ -12,6 +12,7 @@ The primary objective of this project is to provide a structured and intuitive t
   - Asset Classes
   - Object-Generation
 - Phase 2: Frontend Implementation
+  - Until API/Backend is needed
 - Phase 3: Backend Implementation & RESTful API
   - Systemcontroller
   - Systemservice
