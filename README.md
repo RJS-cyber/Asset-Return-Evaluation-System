@@ -7,10 +7,17 @@ The Asset Return Evaluation System (ARES) is a Java-based analytical application
 The primary objective of this project is to provide a structured and intuitive tool for analyzing investment returns, while demonstrating fundamental software engineering concepts such as user input handling, financial computation, data visualization, and modular program design.
 
 # Roadmap
-- Phase 1: Backend Architecture & Error Handling
-- Phase 2: RESTful API Implementation
-- Phase 3: Frontend Implementation
+- Phase 1: Backend Architecture
+  - Unit-Tests
+  - Asset Classes
+  - Object-Generation
+- Phase 2: Frontend Implementation
+- Phase 3: Backend Implementation & RESTful API
+  - Systemcontroller
+  - Systemservice
+  - Calculationservice: nextGaussian
 - Phase 4: Data Visualization & Quality of Life
+  - Page 2, Underneath the Graph next to the Table: Small Box with a "+" hitting turns the plus by 45° and lets the user add another table below for comparison
 - Phase 5: UI Polish
 
 # Requirements
