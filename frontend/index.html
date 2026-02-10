@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asset Return Evaluation System (ARES)</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- Banner Section -->
+<header class="banner">
+  <h1>Welcome to ARES</h1>
+  <nav>
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="imprint.html" class="nav-link">Imprint</a>
+  </nav>
+</header>
+
+<!-- Main Content Section -->
+<main class="container">
+  <!-- Text Box 1 -->
+  <div class="text-box">
+    <h2>About This Application</h2>
+    <p>This is a demonstration of a clean, modern web application built with vanilla HTML, CSS, and JavaScript.</p>
+  </div>
+
+  <!-- Text Box 2 with Buttons -->
+  <div class="text-box">
+    <h2>Server Actions</h2>
+    <p>Use these buttons to interact with the server:</p>
+    <div class="button-group">
+      <button class="btn btn-primary" onclick="sendGetRequest()">GET Request</button>
+      <button class="btn btn-secondary" onclick="sendPostRequest()">POST Request</button>
+      <button class="btn btn-success" onclick="sendDeleteRequest()">DELETE Request</button>
+    </div>
+    <div id="response-area" class="response-box"></div>
+  </div>
+
+  <!-- Text Box 3 -->
+  <div class="text-box">
+    <h2>Features</h2>
+    <ul>
+      <li>Clean, modern design</li>
+      <li>Responsive layout</li>
+      <li>Server communication ready</li>
+      <li>Easy navigation</li>
+    </ul>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>&copy; 2026 My Application. All rights reserved.</p>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>

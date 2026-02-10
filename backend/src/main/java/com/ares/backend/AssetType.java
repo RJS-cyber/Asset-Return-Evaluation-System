@@ -1,18 +1,18 @@
 package com.ares.backend;
 
 public enum AssetType {
-    BONDS(1),
-    RAW_MATERIALS(2),
-    REAL_ESTATES(3),
-    STOCKS(4);
+    BONDS("AssetType_Bonds"),
+    RAW_MATERIALS("AssetType_Raw_Materials"),
+    REAL_ESTATES("AssetType_Real_Estates"),
+    STOCKS("AssetType_Stocks");
 
-    private final int id;
+    private final String id;
 
-    AssetType(int id) {
+    AssetType(String id) {
         this.id = id;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 }

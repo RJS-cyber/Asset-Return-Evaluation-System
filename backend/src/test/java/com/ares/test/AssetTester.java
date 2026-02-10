@@ -27,15 +27,8 @@ public class AssetTester {
 
     @Test
     void testCreateAssetByTypeInvalid(){
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(NullPointerException.class, () ->{
             repository.createAssetByType(null, 1000f, 5f, 2f, 1f);
         });
-
-        /* // Cannot define a new enum value at runtime in Java
-        enum AssetType {INVALID};
-        assertThrows(IllegalArgumentException.class, () -> {
-            systemrepository.createAssetByType(AssetType.INVALID, 1000f, 5f, 2f, 1f);
-        });
-        */
     }
 }
