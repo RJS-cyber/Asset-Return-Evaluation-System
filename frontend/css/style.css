@@ -165,9 +165,9 @@ nav .right a:last-child:hover {
 }
 
 .selection-btn {
-    width: 120px;
+    width: 180px;
     height: 60px;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 600;
     color: var(--text-color);
     background-color: var(--button-color);
@@ -251,8 +251,8 @@ nav .right a:last-child:hover {
 }
 
 .calculate-btn:hover {
-    background-color: var(--navbar-button-press-color);
-    border-color: var(--navbar-button-press-color);
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
     transform: scale(1.02);
 }
 

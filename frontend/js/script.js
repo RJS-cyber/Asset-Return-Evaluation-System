@@ -51,24 +51,28 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Build query parameters
-        const params = new URLSearchParams();
-        params.append('years', years);
-        params.append('amount', amount);
-
-        // Add selected assets as comma-separated string or as individual parameters
-        const assetsArray = Array.from(selectedAssets).sort();
-        params.append('assets', assetsArray.join(','));
+        // Build request body matching sendData DTO structure
+        const requestBody = {
+            years: parseInt(years),
+            amount: parseFloat(amount),
+            assetTypes: Array.from(selectedAssets).sort()
+        };
 
         // Build the API endpoint URL
         // Adjust the base URL according to your backend configuration
-        const apiUrl = `http://localhost:8080/api/calculate?${params.toString()}`;
+        const apiUrl = 'http://localhost:8080/api/calculate';
 
         // Show loading message
         showMessage('Berechnung läuft...', 'info');
 
-        // Send HTTP GET request
-        fetch(apiUrl)
+        // Send HTTP POST request with JSON body
+        fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(requestBody)
+        })
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
