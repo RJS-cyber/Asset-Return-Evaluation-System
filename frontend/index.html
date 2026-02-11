@@ -1,97 +1,152 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
+    <head>
+        <meta charset="UTF-8" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+            rel="stylesheet"
+        />
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+            integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
 
-  <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/style.css" />
 
-  <title>ARES</title>
+        <title>ARES</title>
 
-</head>
-<body>
-  <!-- NAVBAR -->
-    <nav>
-      <div class="left_logo">
-        <a href="/">
-          <img src="assets/ARES-Logo.png" alt="ARES Logo" class="logo" width="200" height="auto">
-        </a>
-      </div>
-      <div class="right">
-        <a href="mailto:name@test.de">
-          <span>Kontakt</span>
-        </a>
-
-        <a href="https://github.com/RJS-cyber/Asset-Return-Evaluation-System" target="_blank" rel="noopener noreferrer">
-          <i class="fa-brands fa-github"></i>
-          <span>Github</span>
-        </a>
-      </div>
-    </nav>
-
-  <main>
-    <!-- Section 1: Hero -->
-    <section class="hero">
-      <div class="container">
-        <h1>Willkommen zu ARES</h1>
-        <h3>Wo Renditen auf Realität treffen</h3>
-        <p>ARES verbindet akademische Präzision mit praktischer Anwendbarkeit und macht komplexe Investmentanalysen für jeden zugänglich – ob für Studierende, private Anleger oder als Basis für professionelle Finanzanwendungen.</p>
-      </div>
-      <div class="links">
-        <a href="#Berechnung">
-          <span>Jetzt berechnen</span>
-        </a>
-        <a href="#Über uns">
-          <span>Mehr über uns</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- Section 2: Berechnung -->
-    <section id="Berechnung" class="berechnung">
-      <div class="berechnung-container">
-        <h2>Berechnung durchführen</h2>
-        <div class="berechnung-content">
-          <!-- Left side: Selection buttons -->
-          <div class="left-buttons">
-            <h3>Asset-Typ auswählen:</h3>
-            <button class="selection-btn" data-asset="BONDS">Bonds</button>
-            <button class="selection-btn" data-asset="RAW_MATERIALS">Raw Materials</button>
-            <button class="selection-btn" data-asset="REAL_ESTATES">Real Estates</button>
-            <button class="selection-btn" data-asset="STOCKS">Stocks</button>
-          </div>
-
-          <!-- Right side: Input fields and submit button -->
-          <div class="right-inputs">
-            <h3>Parameter eingeben:</h3>
-            <div class="input-group">
-              <label for="years">Anzahl der Jahre:</label>
-              <input type="number" id="years" name="years" min="1" placeholder="z.B. 5" required>
+        <link rel="icon" type="image/ico" href="assets/favicon.ico" />
+    </head>
+    <body>
+        <!-- NAVBAR -->
+        <nav>
+            <div class="left_logo">
+                <a href="/">
+                    <img
+                        src="assets/ARES-Logo.png"
+                        alt="ARES Logo"
+                        class="logo"
+                        width="200"
+                        height="auto"
+                    />
+                </a>
             </div>
-            <div class="input-group">
-              <label for="amount">Betrag (€):</label>
-              <input type="number" id="amount" name="amount" min="0" step="0.01" placeholder="z.B. 10000" required>
+            <div class="right">
+                <a href="mailto:name@test.de">
+                    <span>Kontakt</span>
+                </a>
+
+                <a
+                    href="https://github.com/RJS-cyber/Asset-Return-Evaluation-System"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <i class="fa-brands fa-github"></i>
+                    <span>Github</span>
+                </a>
             </div>
-            <button id="calculate-btn" class="calculate-btn">Berechnen</button>
-            <div id="result-message" class="result-message"></div>
-          </div>
-        </div>
-      </div>
-    </section>
+        </nav>
 
+        <main>
+            <!-- Section 1: Hero -->
+            <section class="hero">
+                <div class="container">
+                    <h1>Willkommen zu ARES</h1>
+                    <h3>Wo Renditen auf Realität treffen</h3>
+                    <p>
+                        ARES verbindet akademische Präzision mit praktischer
+                        Anwendbarkeit und macht komplexe Investmentanalysen für
+                        jeden zugänglich – ob für Studierende, private Anleger
+                        oder als Basis für professionelle Finanzanwendungen.
+                    </p>
+                </div>
+                <div class="links">
+                    <a href="#Berechnung">
+                        <span>Jetzt berechnen</span>
+                    </a>
+                    <a href="#Über uns">
+                        <span>Mehr über uns</span>
+                    </a>
+                </div>
+            </section>
 
-    <!-- Section 3: Kontakt -->
-    <section id="Über uns"></section>
-  </main>
+            <!-- Section 2: Berechnung -->
+            <section id="Berechnung" class="berechnung">
+                <div class="berechnung-container">
+                    <h2>Berechnung durchführen</h2>
+                    <div class="berechnung-content">
+                        <!-- Left side: Selection buttons -->
+                        <div class="left-buttons">
+                            <h3>Asset-Typ auswählen:</h3>
+                            <button class="selection-btn" data-asset="BONDS">
+                                Bonds
+                            </button>
+                            <button
+                                class="selection-btn"
+                                data-asset="RAW_MATERIALS"
+                            >
+                                Raw Materials
+                            </button>
+                            <button
+                                class="selection-btn"
+                                data-asset="REAL_ESTATES"
+                            >
+                                Real Estates
+                            </button>
+                            <button class="selection-btn" data-asset="STOCKS">
+                                Stocks
+                            </button>
+                        </div>
 
-  <script src="js/script.js"></script>
-</body>
+                        <!-- Right side: Input fields and submit button -->
+                        <div class="right-inputs">
+                            <h3>Parameter eingeben:</h3>
+                            <div class="input-group">
+                                <label for="years">Anzahl der Jahre:</label>
+                                <input
+                                    type="number"
+                                    id="years"
+                                    name="years"
+                                    min="1"
+                                    placeholder="z.B. 5"
+                                    required
+                                />
+                            </div>
+                            <div class="input-group">
+                                <label for="amount">Betrag (€):</label>
+                                <input
+                                    type="number"
+                                    id="amount"
+                                    name="amount"
+                                    min="0"
+                                    step="0.01"
+                                    placeholder="z.B. 10000"
+                                    required
+                                />
+                            </div>
+                            <button id="calculate-btn" class="calculate-btn">
+                                Berechnen
+                            </button>
+                            <div
+                                id="result-message"
+                                class="result-message"
+                            ></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Kontakt -->
+            <section id="Über uns"></section>
+        </main>
+
+        <script src="js/script.js"></script>
+    </body>
 </html>
