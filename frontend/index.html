@@ -2,57 +2,51 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Asset Return Evaluation System (ARES)</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="css/style.css">
+
+  <title>ARES</title>
+
 </head>
 <body>
-<!-- Banner Section -->
-<header class="banner">
-  <h1>Welcome to ARES</h1>
-  <nav>
-    <a href="index.html" class="nav-link">Home</a>
-    <a href="imprint.html" class="nav-link">Imprint</a>
-  </nav>
-</header>
+  <!-- NAVBAR -->
+    <nav>
+      <div class="left">
+        <a href="/">
+          <img src="assets/ARES-Logo.png" alt="ARES Logo" class="logo" width="200" height="auto">
+        </a>
+      </div>
+      <div class="right">
+        <a href="https://github.com/RJS-cyber/Asset-Return-Evaluation-System" target="_blank" rel="noopener noreferrer">
+          <img src="assets/github-icon.png" alt="GitHub Icon" class="github-icon" width="20" height="auto">
+          <span>Github</span>
+        </a>
+      </div>
+    </nav>
 
-<!-- Main Content Section -->
-<main class="container">
-  <!-- Text Box 1 -->
-  <div class="text-box">
-    <h2>About This Application</h2>
-    <p>This is a demonstration of a clean, modern web application built with vanilla HTML, CSS, and JavaScript.</p>
-  </div>
+  <main>
+    <!-- Section 1: Hero -->
+    <section class="hero">
+        <div class="container">
+        <h1>Willkommen zu ARES</h1>
+          <h3>Der automatisierten Risiko- und Ertragsberechnung für Investitionen</h3>
+        <p>[wip: Inspirierendes Wortspiel]</p>
+        </div>
+    </section>
 
-  <!-- Text Box 2 with Buttons -->
-  <div class="text-box">
-    <h2>Server Actions</h2>
-    <p>Use these buttons to interact with the server:</p>
-    <div class="button-group">
-      <button class="btn btn-primary" onclick="sendGetRequest()">GET Request</button>
-      <button class="btn btn-secondary" onclick="sendPostRequest()">POST Request</button>
-      <button class="btn btn-success" onclick="sendDeleteRequest()">DELETE Request</button>
-    </div>
-    <div id="response-area" class="response-box"></div>
-  </div>
+    <!-- Section 2: Berechnung -->
+    <section id="Berechnung"></section>
 
-  <!-- Text Box 3 -->
-  <div class="text-box">
-    <h2>Features</h2>
-    <ul>
-      <li>Clean, modern design</li>
-      <li>Responsive layout</li>
-      <li>Server communication ready</li>
-      <li>Easy navigation</li>
-    </ul>
-  </div>
-</main>
-
-<!-- Footer -->
-<footer class="footer">
-  <p>&copy; 2026 My Application. All rights reserved.</p>
-</footer>
-
-<script src="js/script.js"></script>
+    <!-- Section 3: Kontakt -->
+    <section id="Kontakt">
+      <a href="mailto:name@test.de">
+        <span>Kontaktieren Sie uns</span>
+      </a>
+    </section>
+  </main>
 </body>
 </html>
