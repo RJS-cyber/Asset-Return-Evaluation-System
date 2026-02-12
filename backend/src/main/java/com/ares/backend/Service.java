@@ -1,10 +1,10 @@
 package com.ares.backend;
 
 import com.ares.backend.model.Asset;
-
 import java.util.List;
 
 public class Service {
+
     private final Repository repository = new Repository();
 
     public List<Asset> getAssets() {
@@ -22,22 +22,26 @@ public class Service {
     }
 
     public void storeData(int years, float amount, List<AssetType> assetTypes) {
-
         try {
             if (assetTypes == null || assetTypes.isEmpty()) {
-                throw new IllegalArgumentException("Asset types cannot be null or empty");
+                throw new IllegalArgumentException(
+                    "Asset types cannot be null or empty"
+                );
             }
             if (amount <= 0) {
-                throw new IllegalArgumentException("Amount must be greater than zero");
+                throw new IllegalArgumentException(
+                    "Amount must be greater than zero"
+                );
             }
             if (years <= 0) {
-                throw new IllegalArgumentException("Years must be greater than zero");
+                throw new IllegalArgumentException(
+                    "Years must be greater than zero"
+                );
             }
 
             for (AssetType assetType : assetTypes) {
                 repository.createAssetByType(assetType, amount, years);
             }
-
         } catch (IllegalArgumentException e) {
             throw new RuntimeException("Error: " + e.getMessage());
         }
@@ -45,38 +49,59 @@ public class Service {
 
     public void simulation() {
         try {
-            for (int i = 0; i < getYears(); i++) {
-
-            }
-
-
+            for (int i = 0; i < getYears(); i++) {}
         } catch (Exception e) {
             throw new RuntimeException("Simulation error: " + e.getMessage());
         }
     }
-
 }
 
-
 /*
-* -- INPUT --
-* for years
-* for assets type
-* assets liegen vor als
-*   einzelne subklassen
-*   in einer liste im repo
-*
-*
-* -- OUTPUT --
-* result in ein array im repo
-* jedes years als neues array in der liste
-*
-*
-* -- ABLAUF --
-* erst die assets als results speichern als Jahr 0
-*
-* Rechnung
-* werte aus dem Vorjahr nehmen
-*
-*
-* */
+ * -- INPUT --
+ * for years
+ * for assets type
+ * assets liegen vor als
+ *   einzelne subklassen
+ *   in einer liste im repo
+ *
+ * startcapital
+ * years
+ * interest
+ * volat
+ * type
+ *
+ *
+ * -- OUTPUT --
+ * result in ein array im repo
+ * jedes years als neues array in der liste
+ *
+ * type
+ * Years
+ * capital
+ * interest
+ *
+ * -- ABLAUF --
+ *
+ * erst die assets als results speichern als Jahr 0
+ * one asset of array
+ * new result (asset-type, i = 0, capital, development = 0)
+ *
+ *
+ * Rechnung
+ *
+ * K0 = capital - result
+ * r = interest - Asset
+ * o = volat - Asset
+ * z = flux - calc
+ *
+ * K1 = K0 * (1 + (r + o * z) )
+ *
+ * -- void calc(previous, asset) --
+ * previous result
+ * capital = previous-capital * (1 + (asset-interest + asset-volat * nextgaussian))
+ * development = capital - previous
+ *
+ * result = repo.createresult (asset-type, i as year, capital, development)
+ * repo.add result
+ *
+ * */
