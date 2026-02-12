@@ -3,6 +3,7 @@ package com.ares.backend.model;
 import com.ares.backend.AssetType;
 
 public abstract class Asset {
+
     private final float startcapital;
     private final float interest;
     private final float volatility;
@@ -18,7 +19,13 @@ public abstract class Asset {
      * @param type Typ der Anlage
      */
 
-    protected Asset(float startcapital, float interest, float volatility, float fluctuation, AssetType type) {
+    protected Asset(
+        float startcapital,
+        float interest,
+        float volatility,
+        float fluctuation,
+        AssetType type
+    ) {
         this.startcapital = startcapital;
         this.interest = interest;
         this.volatility = volatility;
