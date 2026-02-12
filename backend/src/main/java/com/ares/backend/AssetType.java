@@ -1,10 +1,10 @@
 package com.ares.backend;
 
 public enum AssetType {
-    BONDS("Bonds", 1),
-    RAW_MATERIALS("Raw-Materials", 2),
-    REAL_ESTATES("Real-Estates", 3),
-    STOCKS("Stocks", 4);
+    BONDS("Bonds", 0),
+    RAW_MATERIALS("Raw-Materials", 1),
+    REAL_ESTATES("Real-Estates", 2),
+    STOCKS("Stocks", 3);
 
     private final String typeId;
     private final int indexId;

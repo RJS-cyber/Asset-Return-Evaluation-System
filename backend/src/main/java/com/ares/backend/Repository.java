@@ -6,6 +6,7 @@ import com.ares.backend.model.RawMaterials;
 import com.ares.backend.model.RealEstates;
 import com.ares.backend.model.Result;
 import com.ares.backend.model.Stocks;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,17 +14,11 @@ import java.util.List;
 public class Repository {
 
     private final int maxTypes = AssetType.getMaxTyes();
+    @Getter
     private final List<Asset> assets = new ArrayList<>();
+    @Getter
     private final List<Result[]> results = new ArrayList<>();
 
-
-    public List<Asset> getAssets() {
-        return assets;
-    }
-
-    public List<Result[]> getResults() {
-        return results;
-    }
 
     public void addAsset(Asset asset) {
         assets.add(asset);
@@ -31,13 +26,13 @@ public class Repository {
 
     public void addResult(Result result) {
         if (results.isEmpty()) {
-            results.add(new Result[maxTypes + 1]);
+            results.add(new Result[maxTypes]);
         } else {
             Result[] currentResults = results.get(results.size() - 1);
             Result existingResult = currentResults[result.getType().getIndexId()];
 
             if (existingResult != null && existingResult.getYear() == result.getYear() - 1) {
-                results.add(new Result[maxTypes + 1]);
+                results.add(new Result[maxTypes]);
             }
         }
 

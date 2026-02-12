@@ -7,6 +7,20 @@ import java.util.List;
 public class Service {
     private final Repository repository = new Repository();
 
+    public List<Asset> getAssets() {
+        if (repository.getAssets().isEmpty()) {
+            throw new RuntimeException("No assets found in the repository");
+        }
+        return repository.getAssets();
+    }
+
+    public int getYears() {
+        if (repository.getAssets().isEmpty()) {
+            throw new RuntimeException("No assets found in the repository");
+        }
+        return repository.getAssets().get(0).getYears();
+    }
+
     public void storeData(int years, float amount, List<AssetType> assetTypes) {
 
         try {
@@ -29,12 +43,40 @@ public class Service {
         }
     }
 
-    public List<Asset> getAssets() {
-        return repository.getAssets();
+    public void simulation() {
+        try {
+            for (int i = 0; i < getYears(); i++) {
+
+            }
+
+
+        } catch (Exception e) {
+            throw new RuntimeException("Simulation error: " + e.getMessage());
+        }
     }
 
-
-
-
-
 }
+
+
+/*
+* -- INPUT --
+* for years
+* for assets type
+* assets liegen vor als
+*   einzelne subklassen
+*   in einer liste im repo
+*
+*
+* -- OUTPUT --
+* result in ein array im repo
+* jedes years als neues array in der liste
+*
+*
+* -- ABLAUF --
+* erst die assets als results speichern als Jahr 0
+*
+* Rechnung
+* werte aus dem Vorjahr nehmen
+*
+*
+* */

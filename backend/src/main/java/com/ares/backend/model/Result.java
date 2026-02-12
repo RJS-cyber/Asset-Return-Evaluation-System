@@ -13,12 +13,12 @@ public class Result {
         AssetType type,
         int year,
         float capital,
-        float evolution
+        float interest
     ) {
         this.type = type;
         this.year = year;
         this.capital = capital;
-        this.interest = evolution;
+        this.interest = interest;
     }
 
     public AssetType getType() {
