@@ -1,5 +1,7 @@
 package com.ares.backend.model;
 
+import com.ares.backend.AssetType;
+
 public class Result {
 
     private final AssetType type;
@@ -7,15 +9,31 @@ public class Result {
     private final float capital;
     private final float interest;
 
-    public private Result(
+    public Result(
         AssetType type,
         int year,
         float capital,
-        float interest
+        float evolution
     ) {
-        type = type;
-        year = year;
-        capital = capital;
-        interest = interest;
+        this.type = type;
+        this.year = year;
+        this.capital = capital;
+        this.interest = evolution;
+    }
+
+    public AssetType getType() {
+        return this.type;
+    }
+
+    public int getYear() {
+        return this.year;
+    }
+
+    public float getCapital() {
+        return this.capital;
+    }
+
+    public float getInterest() {
+        return this.interest;
     }
 }

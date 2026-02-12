@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Build the API endpoint URL
         // Adjust the base URL according to your backend configuration
-        const apiUrl = 'http://localhost:8080/api/calculate';
+        const apiUrl = 'http://localhost:8080/api/ares/calculate';
 
         // Show loading message
         showMessage('Berechnung läuft...', 'info');
