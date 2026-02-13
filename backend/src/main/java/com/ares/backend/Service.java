@@ -1,6 +1,8 @@
 package com.ares.backend;
 
 import com.ares.backend.model.Asset;
+import com.ares.backend.model.Result;
+
 import java.util.List;
 
 public class Service {
@@ -49,7 +51,15 @@ public class Service {
 
     public void simulation() {
         try {
-            for (int i = 0; i < getYears(); i++) {}
+            for (Asset asset : getAssets()) {
+                Result initialResult = new Result(asset.getType(), 0, asset.getStartcapital(), 0);
+                repository.storeResult(initialResult);
+            }
+            for (int i = 0; i < getYears(); i++) {
+                for (Asset asset : getAssets()) {
+
+                }
+            }
         } catch (Exception e) {
             throw new RuntimeException("Simulation error: " + e.getMessage());
         }

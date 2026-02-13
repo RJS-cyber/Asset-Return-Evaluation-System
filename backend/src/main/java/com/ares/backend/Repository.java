@@ -13,7 +13,6 @@ import java.util.List;
 
 public class Repository {
 
-    private final int maxTypes = AssetType.getMaxTyes();
     @Getter
     private final List<Asset> assets = new ArrayList<>();
     @Getter
@@ -24,15 +23,19 @@ public class Repository {
         assets.add(asset);
     }
 
-    public void addResult(Result result) {
+    private int amountOfTypes() {
+        return getAssets().size();
+    }
+
+    public void storeResult(Result result) {
         if (results.isEmpty()) {
-            results.add(new Result[maxTypes]);
+            results.add(new Result[amountOfTypes()]);
         } else {
             Result[] currentResults = results.get(results.size() - 1);
             Result existingResult = currentResults[result.getType().getIndexId()];
 
             if (existingResult != null && existingResult.getYear() == result.getYear() - 1) {
-                results.add(new Result[maxTypes]);
+                results.add(new Result[amountOfTypes()]);
             }
         }
 
@@ -59,6 +62,6 @@ public class Repository {
     }
 
     public void createResult(AssetType type, int year, float capital, float interest) {
-        addResult(new Result(type, year, capital, interest));
+        storeResult(new Result(type, year, capital, interest));
     }
 }

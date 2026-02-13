@@ -106,6 +106,7 @@ class RepositoryTests {
 
     @Test
     void testCreateResult() {
+        repository.addAsset(new Asset(100f, 1, 5, 3.0f, AssetType.BONDS) {});
         repository.createResult(AssetType.BONDS, 1, 1050f, 3.0f);
 
         assertEquals(1, repository.getResults().size());
@@ -120,9 +121,10 @@ class RepositoryTests {
     }
 
     @Test
-    void testAddResult_SingleResult() {
+    void testStoreResult_SingleResult() {
+        repository.addAsset(new Asset(100f, 1, 5, 3.0f, AssetType.BONDS) {});
         Result result = new Result(AssetType.BONDS, 1, 1050f, 3.0f);
-        repository.addResult(result);
+        repository.storeResult(result);
 
         assertEquals(1, repository.getResults().size());
         Result[] firstYearResults = repository.getResults().get(0);
@@ -130,12 +132,14 @@ class RepositoryTests {
     }
 
     @Test
-    void testAddResult_MultipleResultsSameYear() {
+    void testStoreResult_MultipleResultsSameYear() {
+        repository.addAsset(new Asset(100f, 1, 5, 3.0f, AssetType.BONDS) {});
+        repository.addAsset(new Asset(100f, 1, 5, 3.0f, AssetType.STOCKS) {});
         Result bondsResult = new Result(AssetType.BONDS, 1, 1050f, 3.0f);
         Result stocksResult = new Result(AssetType.STOCKS, 1, 2100f, 8.0f);
 
-        repository.addResult(bondsResult);
-        repository.addResult(stocksResult);
+        repository.storeResult(bondsResult);
+        repository.storeResult(stocksResult);
 
         assertEquals(1, repository.getResults().size());
         Result[] firstYearResults = repository.getResults().get(0);
@@ -144,12 +148,13 @@ class RepositoryTests {
     }
 
     @Test
-    void testAddResult_MultipleDifferentYears() {
+    void testStoreResult_MultipleDifferentYears() {
+        repository.addAsset(new Asset(100f, 1, 5, 3.0f, AssetType.BONDS) {});
         Result year1Result = new Result(AssetType.BONDS, 1, 1050f, 3.0f);
         Result year2Result = new Result(AssetType.BONDS, 2, 1100f, 3.0f);
 
-        repository.addResult(year1Result);
-        repository.addResult(year2Result);
+        repository.storeResult(year1Result);
+        repository.storeResult(year2Result);
 
         assertEquals(2, repository.getResults().size());
         assertEquals(year1Result, repository.getResults().get(0)[AssetType.BONDS.getIndexId()]);

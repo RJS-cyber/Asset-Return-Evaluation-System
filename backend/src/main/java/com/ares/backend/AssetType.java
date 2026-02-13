@@ -22,6 +22,8 @@ public enum AssetType {
         return indexId;
     }
 
+    // Deprecated: amountOfTypes in Repository should be used instead
+    @Deprecated
     static public int getMaxTyes() {
         return values().length;
     }
