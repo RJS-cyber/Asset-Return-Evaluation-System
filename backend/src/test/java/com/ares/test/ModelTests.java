@@ -55,7 +55,7 @@ class ModelTests {
         assertEquals(AssetType.BONDS, result.getType());
         assertEquals(5, result.getYear());
         assertEquals(1500f, result.getCapital());
-        assertEquals(3.5f, result.getInterest());
+        assertEquals(3.5f, result.getDevelopment());
     }
 
     @Test
@@ -64,6 +64,6 @@ class ModelTests {
         assertNotNull(result.getType());
         assertTrue(result.getYear() > 0);
         assertTrue(result.getCapital() > 0);
-        assertTrue(result.getInterest() > 0);
+        assertTrue(result.getDevelopment() > 0);
     }
 }

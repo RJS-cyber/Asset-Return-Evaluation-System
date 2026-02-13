@@ -11,19 +11,19 @@ public abstract class Asset {
 
     /**
      * Konstruktor für die Anlageklasse.
+     * @param type Typ der Anlage
      * @param startcapital Startkapital der Anlage
      * @param years Anzahl der Jahre, die die Anlage gehalten wird
      * @param interest Rendite der Anlage
      * @param volatility Volatilität der Anlage
-     * @param type Typ der Anlage
      */
 
-    protected Asset(float startcapital, int years, float interest, float volatility, AssetType type) {
+    protected Asset(AssetType type, float startcapital, int years, float interest, float volatility) {
+        this.type = type;
         this.startcapital = startcapital;
         this.years = years;
         this.interest = interest;
         this.volatility = volatility;
-        this.type = type;
     }
 
     public float getStartcapital() {

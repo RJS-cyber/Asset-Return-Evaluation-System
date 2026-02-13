@@ -7,18 +7,18 @@ public class Result {
     private final AssetType type;
     private final int year;
     private final float capital;
-    private final float interest;
+    private final float development;
 
     public Result(
         AssetType type,
         int year,
         float capital,
-        float interest
+        float development
     ) {
         this.type = type;
         this.year = year;
         this.capital = capital;
-        this.interest = interest;
+        this.development = development;
     }
 
     public AssetType getType() {
@@ -33,7 +33,7 @@ public class Result {
         return this.capital;
     }
 
-    public float getInterest() {
-        return this.interest;
+    public float getDevelopment() {
+        return this.development;
     }
 }
