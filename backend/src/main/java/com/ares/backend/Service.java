@@ -8,6 +8,7 @@ import com.ares.backend.model.Result;
 import com.ares.backend.model.Stocks;
 
 import java.util.List;
+import java.util.Random;
 
 public class Service {
 
@@ -71,67 +72,58 @@ public class Service {
 
     public void simulation() {
         try {
-            for (Asset asset : getAssets()) {
-                Result initialResult = new Result(asset.getType(), 0, asset.getStartcapital(), 0);
+            List<Asset> assets = repository.getAssets();
+            if (assets.isEmpty()) {
+                throw new RuntimeException("No assets found in the repository");
+            }
+
+            Random random = new Random();
+            int years = assets.get(0).getYears();
+
+            // Write initial results for year 0
+            for (Asset asset : assets) {
+                Result initialResult = new Result(asset.getType(), 0, asset.getStartcapital(), 0.0f);
                 repository.storeResult(initialResult);
             }
-            for (int i = 0; i < getYears(); i++) {
-                for (Asset asset : getAssets()) {
 
+            // Calculate results for each subsequent year
+            for (int year = 1; year <= years; year++) {
+                for (Asset asset : assets) {
+                    Result previousResult = repository.getResultForYearAndType(year - 1, asset.getType());
+                    if (previousResult == null) {
+                        throw new RuntimeException("Previous result not found for " + asset.getType() + " at year " + (year - 1));
+                    }
+
+                    Result newResult = calculation(previousResult, asset, year, random);
+                    repository.storeResult(newResult);
                 }
             }
         } catch (Exception e) {
             throw new RuntimeException("Simulation error: " + e.getMessage());
         }
     }
-}
 
-/*
- * -- INPUT --
- * for years
- * for assets type
- * assets liegen vor als
- *   einzelne subklassen
- *   in einer liste im repo
- *
- * startcapital
- * years
- * interest
- * volat
- * type
- *
- *
- * -- OUTPUT --
- * result in ein array im repo
- * jedes years als neues array in der liste
- *
- * type
- * Years
- * capital
- * interest
- *
- * -- ABLAUF --
- *
- * erst die assets als results speichern als Jahr 0
- * one asset of array
- * new result (asset-type, i = 0, capital, development = 0)
- *
- *
- * Rechnung
- *
- * K0 = capital - result
- * r = interest - Asset
- * o = volat - Asset
- * z = flux - calc
- *
- * K1 = K0 * (1 + (r + o * z) )
- *
- * -- void calc(previous, asset) --
- * previous result
- * capital = previous-capital * (1 + (asset-interest + asset-volat * nextgaussian))
- * development = capital - previous
- *
- * result = repo.createresult (asset-type, i as year, capital, development)
- * repo.add result
- *
- * */
+    /**
+     * @param previousResult The result from the previous year
+     * @param asset The asset being calculated
+     * @param year The current year
+     * @param random Random number generator for Gaussian distribution
+     * @return A new Result with calculated capital and development
+     */
+    private Result calculation(Result previousResult, Asset asset, int year, Random random) {
+        float K0 = previousResult.getCapital();
+        float r = asset.getInterest();
+        float o = asset.getVolatility();
+        float z = (float) random.nextGaussian();
+
+        float Kn = K0 * (1 + (r + o * z));
+        
+        float development = Kn - K0;
+
+        return new Result(asset.getType(), year, Kn, development);
+    }
+
+    public Result[][] getResults() {
+        return repository.getResultsAsArray();
+    }
+}

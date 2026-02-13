@@ -196,6 +196,22 @@ public class Repository {
         resultsMap.put(year, new HashMap<>(yearResults));
     }
 
+    public Result[][] getResultsAsArray() {
+        int yearCount = getYearCount();
+        int typeCount = amountOfTypes();
+        Result[][] array = new Result[yearCount][typeCount];
+
+        List<Integer> sortedYears = getAvailableYears();
+        for (int i = 0; i < sortedYears.size(); i++) {
+            int year = sortedYears.get(i);
+            Map<AssetType, Result> yearResults = getResultsForYear(year);
+            for (AssetType type : AssetType.values()) {
+                array[i][type.getIndexId()] = yearResults.get(type);
+            }
+        }
+        return array;
+    }
+
     /**
      * Get the raw nested map
      */

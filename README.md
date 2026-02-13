@@ -21,6 +21,14 @@ The primary objective of this project is to provide a structured and intuitive t
   - Page 2, Underneath the Graph next to the Table: Small Box with a "+" hitting turns the plus by 45° and lets the user add another table below for comparison
 - Phase 5: UI Polish
 
+# Start Application
+## Requirements
+- Java 17
+- Maven 3.8+
+## Running the Application
+- backend: mvn spring-boot:run
+- frontend: npm run dev
+
 # Requirements
 (original formulation of the minimum requirement of the assignment)
 
