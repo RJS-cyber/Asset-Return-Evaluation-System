@@ -1,7 +1,11 @@
 package com.ares.backend;
 
 import com.ares.backend.model.Asset;
+import com.ares.backend.model.Bonds;
+import com.ares.backend.model.RawMaterials;
+import com.ares.backend.model.RealEstates;
 import com.ares.backend.model.Result;
+import com.ares.backend.model.Stocks;
 
 import java.util.List;
 
@@ -42,11 +46,27 @@ public class Service {
             }
 
             for (AssetType assetType : assetTypes) {
-                repository.createAssetByType(assetType, amount, years);
+                Asset asset = createAssetByType(assetType, amount, years);
+                repository.addAsset(asset);
             }
         } catch (IllegalArgumentException e) {
             throw new RuntimeException("Error: " + e.getMessage());
         }
+    }
+
+    private Asset createAssetByType(AssetType type, float startcapital, int years) {
+        return switch(type) {
+            case BONDS -> new Bonds(startcapital, years);
+            case RAW_MATERIALS -> new RawMaterials(startcapital, years);
+            case REAL_ESTATES -> new RealEstates(startcapital, years);
+            case STOCKS -> new Stocks(startcapital, years);
+            default -> throw new IllegalArgumentException("Unknown AssetType: " + type);
+        };
+    }
+
+    public void createResult(AssetType type, int year, float capital, float development) {
+        Result result = new Result(type, year, capital, development);
+        repository.storeResult(result);
     }
 
     public void simulation() {
