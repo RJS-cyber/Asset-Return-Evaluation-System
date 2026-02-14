@@ -802,6 +802,78 @@ footer .footer-btn i {
     line-height: 1.7;
 }
 
+/* Hire Section */
+
+.hire-section {
+    margin-top: 50px;
+    padding-top: 40px;
+    border-top: 2px solid #e8e8e8;
+}
+
+.hire-content {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(255, 152, 0, 0.1));
+    padding: 30px 35px;
+    border-radius: 12px;
+    text-align: center;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.hire-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 15px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: white;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.hire-content h3 {
+    font-size: clamp(20px, 3.5vw, 26px);
+    color: var(--navbar-button-color);
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.hire-content p {
+    font-size: clamp(14px, 2vw, 16px);
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.hire-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 30px;
+    font-size: clamp(16px, 2vw, 18px);
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.hire-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+}
+
+.hire-btn i {
+    font-size: 18px;
+}
+
 /* Mission Section */
 
 .mission-content {
