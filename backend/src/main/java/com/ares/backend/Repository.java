@@ -22,8 +22,8 @@ public class Repository {
     }
 
     public void storeResult(Result result) {
-        int year = result.getYear();
-        AssetType type = result.getType();
+        int year = result.year();
+        AssetType type = result.type();
 
         resultsMap.computeIfAbsent(year, key -> new EnumMap<>(AssetType.class)).put(type, result);
     }
@@ -76,8 +76,8 @@ public class Repository {
         double maxCapital = 0f;
         for (Map<AssetType, Result> yearResults : resultsMap.values()) {
             for (Result result : yearResults.values()) {
-                if (result.getCapital() > maxCapital) {
-                    maxCapital = result.getCapital();
+                if (result.capital() > maxCapital) {
+                    maxCapital = result.capital();
                 }
             }
         }
@@ -126,7 +126,7 @@ public class Repository {
         if (typeResults.isEmpty()) return 0f;
 
         return (float) typeResults.stream()
-                .mapToDouble(Result::getDevelopment)
+                .mapToDouble(Result::development)
                 .average()
                 .orElse(0.0);
     }

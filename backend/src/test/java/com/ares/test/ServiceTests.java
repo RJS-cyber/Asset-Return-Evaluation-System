@@ -108,10 +108,10 @@ class ServiceTests {
         for (AssetType assetType : assetTypes) {
             Result result = results[0][assetType.getIndexId()];
             assertNotNull(result);
-            assertEquals(0, result.getYear());
-            assertEquals(startCapital, result.getCapital());
-            assertEquals(0f, result.getDevelopment());
-            assertEquals(assetType, result.getType());
+            assertEquals(0, result.year());
+            assertEquals(startCapital, result.capital());
+            assertEquals(0f, result.development());
+            assertEquals(assetType, result.type());
         }
 
         for (int yearIndex = 1; yearIndex <= years; yearIndex++) {
@@ -120,19 +120,19 @@ class ServiceTests {
                 Result previousResult = results[yearIndex - 1][assetType.getIndexId()];
 
                 assertNotNull(currentResult);
-                assertEquals(yearIndex, currentResult.getYear());
-                assertEquals(assetType, currentResult.getType());
+                assertEquals(yearIndex, currentResult.year());
+                assertEquals(assetType, currentResult.type());
 
-                double expectedDevelopment = currentResult.getCapital() - previousResult.getCapital();
-                assertEquals(expectedDevelopment, currentResult.getDevelopment());
+                double expectedDevelopment = currentResult.capital() - previousResult.capital();
+                assertEquals(expectedDevelopment, currentResult.development());
 
-                assertTrue(currentResult.getCapital() > 0);
+                assertTrue(currentResult.capital() > 0);
             }
         }
 
-        assertEquals(AssetType.BONDS, results[0][AssetType.BONDS.getIndexId()].getType());
-        assertEquals(AssetType.STOCKS, results[0][AssetType.STOCKS.getIndexId()].getType());
-        assertEquals(AssetType.REAL_ESTATES, results[0][AssetType.REAL_ESTATES.getIndexId()].getType());
-        assertEquals(AssetType.RAW_MATERIALS, results[0][AssetType.RAW_MATERIALS.getIndexId()].getType());
+        assertEquals(AssetType.BONDS, results[0][AssetType.BONDS.getIndexId()].type());
+        assertEquals(AssetType.STOCKS, results[0][AssetType.STOCKS.getIndexId()].type());
+        assertEquals(AssetType.REAL_ESTATES, results[0][AssetType.REAL_ESTATES.getIndexId()].type());
+        assertEquals(AssetType.RAW_MATERIALS, results[0][AssetType.RAW_MATERIALS.getIndexId()].type());
     }
 }

@@ -100,7 +100,7 @@ public class Service {
      * @return A new Result with calculated capital and development
      */
     private Result calculation(Result previousResult, Asset asset, int year, Random random) {
-        double previousCapital = previousResult.getCapital();
+        double previousCapital = previousResult.capital();
         float interest = asset.getInterest();
         float volatility = asset.getVolatility();
         float fluxiation = (float) random.nextGaussian();
