@@ -6,8 +6,8 @@ import lombok.Data;
 import java.util.ArrayList;
 
 @Data
-public class sendData {
+public class SendData {
     private int years;
-    private float amount;
+    private double amount;
     private ArrayList<AssetType> assetTypes;
 }

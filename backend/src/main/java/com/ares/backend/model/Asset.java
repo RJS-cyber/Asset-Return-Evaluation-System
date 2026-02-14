@@ -1,12 +1,19 @@
 package com.ares.backend.model;
 
 import com.ares.backend.AssetType;
+import lombok.Getter;
 
 public abstract class Asset {
-    private final float startcapital;
+
+    @Getter
+    private final double startcapital;
+    @Getter
     private final int years;
+    @Getter
     private final float interest;
+    @Getter
     private final float volatility;
+    @Getter
     private final AssetType type;
 
     /**
@@ -18,31 +25,11 @@ public abstract class Asset {
      * @param volatility Volatilität der Anlage
      */
 
-    protected Asset(AssetType type, float startcapital, int years, float interest, float volatility) {
+    protected Asset(AssetType type, double startcapital, int years, float interest, float volatility) {
         this.type = type;
         this.startcapital = startcapital;
         this.years = years;
         this.interest = interest;
         this.volatility = volatility;
-    }
-
-    public float getStartcapital() {
-        return startcapital;
-    }
-
-    public int getYears() {
-        return years;
-    }
-
-    public float getInterest() {
-        return interest;
-    }
-
-    public float getVolatility() {
-        return volatility;
-    }
-
-    public AssetType getType() {
-        return type;
     }
 }
