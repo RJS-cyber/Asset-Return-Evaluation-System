@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+            rel="stylesheet"
+        />
+
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+            integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+
+        <link rel="stylesheet" href="css/style.css" />
+
+        <title>ARES - Ergebnisse</title>
+
+        <link rel="icon" type="image/ico" href="assets/favicon.ico" />
+    </head>
+    <body>
+        <!-- NAVBAR -->
+        <nav>
+            <div class="left_logo">
+                <a href="/">
+                    <img
+                        src="assets/ARES-Logo.png"
+                        alt="ARES Logo"
+                        class="logo"
+                        width="200"
+                        height="auto"
+                    />
+                </a>
+            </div>
+            <div class="right">
+                <a href="mailto:name@test.de">
+                    <span>Kontakt</span>
+                </a>
+
+                <a
+                    href="https://github.com/RJS-cyber/Asset-Return-Evaluation-System"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <i class="fa-brands fa-github"></i>
+                    <span>Github</span>
+                </a>
+            </div>
+        </nav>
+
+        <main>
+            <!-- Results Section -->
+            <section class="results-section">
+                <div class="results-container">
+                    <h1>Simulationsergebnisse</h1>
+
+                    <div class="back-button-container">
+                        <a href="index.html#Berechnung" class="back-button">
+                            <i class="fas fa-arrow-left"></i> Zurück zur Berechnung
+                        </a>
+                    </div>
+
+                    <!-- Graph Container -->
+                    <div class="graph-container">
+                        <canvas id="resultsChart"></canvas>
+                    </div>
+
+                    <!-- Tables Container -->
+                    <div id="tables-container" class="tables-container">
+                        <!-- Tables will be dynamically generated here -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Include Chart.js library for graphing -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+        <script src="js/results.js"></script>
+    </body>
+</html>
