@@ -13,22 +13,11 @@ import java.util.Random;
 public class Service {
 
     private final Repository repository = new Repository();
+    Random random = new Random();
 
-    public List<Asset> getAssets() {
-        if (repository.getAssets().isEmpty()) {
-            throw new RuntimeException("No assets found in the repository");
-        }
-        return repository.getAssets();
-    }
-
-    public int getYears() {
-        if (repository.getAssets().isEmpty()) {
-            throw new RuntimeException("No assets found in the repository");
-        }
-        return repository.getAssets().get(0).getYears();
-    }
-
-    public void storeData(int years, float amount, List<AssetType> assetTypes) {
+    // ========== Handle Inputs ==========
+    // ====================================
+    public void storeData(int years, double amount, List<AssetType> assetTypes) {
         try {
             if (assetTypes == null || assetTypes.isEmpty()) {
                 throw new IllegalArgumentException(
@@ -46,6 +35,9 @@ public class Service {
                 );
             }
 
+            repository.getAssets().clear();
+            repository.clearResults();
+
             for (AssetType assetType : assetTypes) {
                 Asset asset = createAssetByType(assetType, amount, years);
                 repository.addAsset(asset);
@@ -55,7 +47,7 @@ public class Service {
         }
     }
 
-    private Asset createAssetByType(AssetType type, float startcapital, int years) {
+    private Asset createAssetByType(AssetType type, double startcapital, int years) {
         return switch(type) {
             case BONDS -> new Bonds(startcapital, years);
             case RAW_MATERIALS -> new RawMaterials(startcapital, years);
@@ -65,11 +57,8 @@ public class Service {
         };
     }
 
-    public void createResult(AssetType type, int year, float capital, float development) {
-        Result result = new Result(type, year, capital, development);
-        repository.storeResult(result);
-    }
-
+    // ========= Calculate Results =========
+    // ====================================
     public void simulation() {
         try {
             List<Asset> assets = repository.getAssets();
@@ -77,7 +66,7 @@ public class Service {
                 throw new RuntimeException("No assets found in the repository");
             }
 
-            Random random = new Random();
+
             int years = assets.get(0).getYears();
 
             // Write initial results for year 0
@@ -111,19 +100,30 @@ public class Service {
      * @return A new Result with calculated capital and development
      */
     private Result calculation(Result previousResult, Asset asset, int year, Random random) {
-        float K0 = previousResult.getCapital();
-        float r = asset.getInterest();
-        float o = asset.getVolatility();
-        float z = (float) random.nextGaussian();
+        double previousCapital = previousResult.getCapital();
+        float interest = asset.getInterest();
+        float volatility = asset.getVolatility();
+        float fluxiation = (float) random.nextGaussian();
 
-        float Kn = K0 * (1 + (r + o * z));
-        
-        float development = Kn - K0;
+        double currentCapital = previousCapital * (1 + (interest + volatility * fluxiation));
 
-        return new Result(asset.getType(), year, Kn, development);
+        double development = currentCapital - previousCapital;
+
+        return new Result(asset.getType(), year, currentCapital, development);
     }
 
+
+    // ========= Send to Frontend =========
+    // ====================================
     public Result[][] getResults() {
         return repository.getResultsAsArray();
+    }
+
+    public int graphDataYears() {
+        return repository.getYearCount();
+    }
+
+    public double graphDataMaxCapital() {
+        return repository.getMaxCapital();
     }
 }

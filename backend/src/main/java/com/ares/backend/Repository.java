@@ -15,7 +15,7 @@ public class Repository {
     private final Map<Integer, Map<AssetType, Result>> resultsMap = new HashMap<>();
 
 
-    // ==============Storage==============
+    // ============= Storage =============
     // ====================================
     public void addAsset(Asset asset) {
         assets.add(asset);
@@ -32,7 +32,7 @@ public class Repository {
         resultsMap.clear();
     }
 
-    // ===============Output===============
+    // ============== Output ==============
     // ====================================
 
     protected Result getResultForYearAndType(int year, AssetType type) {
@@ -63,7 +63,7 @@ public class Repository {
     }
 
 
-    // ==============Analysis==============
+    // ============= Analysis =============
     // ====================================
 
     // Function for graph dimensions
@@ -72,8 +72,8 @@ public class Repository {
     }
 
     // Function for graph dimensions
-    protected float getMaxCapital() {
-        float maxCapital = 0f;
+    protected double getMaxCapital() {
+        double maxCapital = 0f;
         for (Map<AssetType, Result> yearResults : resultsMap.values()) {
             for (Result result : yearResults.values()) {
                 if (result.getCapital() > maxCapital) {
@@ -103,7 +103,7 @@ public class Repository {
 
 
 
-    // ===============Unused===============
+    // ============== Unused ==============
     // ====================================
     protected Map<Integer, Result> getResultsForAssetType(AssetType type) {
         return resultsMap.entrySet().stream()
