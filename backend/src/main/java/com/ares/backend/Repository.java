@@ -44,17 +44,18 @@ public class Repository {
     protected Result[][] getResultsAsArray() {
         int yearCount = getYearCount();
         int typeCount = amountOfTypes();
-        Result[][] array = new Result[yearCount][typeCount];
+        Result[][] resultArray = new Result[yearCount][typeCount];
 
-        List<Integer> sortedYears = getAvailableYears();
-        for (int i = 0; i < sortedYears.size(); i++) {
-            int year = sortedYears.get(i);
-            Map<AssetType, Result> yearResults = getResultsForYear(year);
-            for (AssetType type : AssetType.values()) { //FIXME - assumes all Assets have been chosen
-                array[i][type.getIndexId()] = yearResults.get(type);
+        int yearsIndex = assets.get(0).getYears() + 1;
+        for (int i = 0; i < yearsIndex; i++) {
+            Map<AssetType, Result> yearResults = getResultsForYear(i);
+            int j = 0;
+            for (Result result : yearResults.values()) {
+                resultArray[i][j] = result;
+                j++;
             }
         }
-        return array;
+        return resultArray;
     }
 
     // Get the raw nested map
@@ -86,11 +87,6 @@ public class Repository {
 
 
     // Function for getResultsAsArray
-    private List<Integer> getAvailableYears() {
-        return resultsMap.keySet().stream().sorted().toList();
-    }
-
-    // Function for getResultsAsArray
     private Map<AssetType, Result> getResultsForYear(int year) {
         return resultsMap.getOrDefault(year, Collections.emptyMap());
     }
@@ -99,47 +95,4 @@ public class Repository {
     private int amountOfTypes() {
         return getAssets().size();
     }
-
-
-
-
-    // ============== Unused ==============
-    // ====================================
-    protected Map<Integer, Result> getResultsForAssetType(AssetType type) {
-        return resultsMap.entrySet().stream()
-                .filter(entry -> entry.getValue().containsKey(type))
-                .collect(Collectors.toMap(
-                        Map.Entry::getKey,
-                        entry -> entry.getValue().get(type)
-                ));
-    }
-
-    protected List<Result> getResultsForAssetTypeAsList(AssetType type) {
-        return new ArrayList<>(getResultsForAssetType(type).values());
-    }
-
-    /**
-     * Get average development for a specific asset type
-     */
-    protected float getAverageDevelopmentForType(AssetType type) {
-        List<Result> typeResults = getResultsForAssetTypeAsList(type);
-        if (typeResults.isEmpty()) return 0f;
-
-        return (float) typeResults.stream()
-                .mapToDouble(Result::development)
-                .average()
-                .orElse(0.0);
-    }
-
-    /**
-     * Get results for multiple asset types
-     */
-    protected Map<AssetType, List<Result>> getResultsForAssetTypes(AssetType... types) {
-        Map<AssetType, List<Result>> resultMap = new EnumMap<>(AssetType.class);
-        for (AssetType type : types) {
-            resultMap.put(type, getResultsForAssetTypeAsList(type));
-        }
-        return resultMap;
-    }
-
 }
