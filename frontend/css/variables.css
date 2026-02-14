@@ -1,0 +1,17 @@
+/* CSS Variables and Color Scheme */
+:root{
+    --text-color: #1a1c20;
+    --link-color: #4a76ee;
+    --button-color: #edecec;
+    --background-color: #f5f5f5;
+    --navbar-color: #e8e8e8;
+    --navbar-button-color: #11213E;
+    --navbar-button-press-color: #11213ee7;
+    --primary-color: #4CAF50;
+    --secondary-color: #ff9800;
+    --asset-color-bonds: #f3e221;
+    --asset-color-raw-materials: #4121f3;
+    --asset-color-real-estates: #f38321;
+    --asset-color-stocks: #b421f3;
+    --font-family: 'Arial', sans-serif;
+}

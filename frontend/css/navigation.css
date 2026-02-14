@@ -1,0 +1,47 @@
+/* Navigation Bar Styles */
+nav {
+    background-color: var(--navbar-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    height: 95px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav .right a {
+    color: var(--navbar-button-color);
+    font-size: 22px;
+    font-weight: 600;
+}
+
+nav .right a:first-child {
+    margin-right: 20px;
+    border-radius: 5px;
+    padding: 5px 15px;
+    border: 1px solid var(--navbar-color);
+}
+
+nav .right a:last-child {
+    color: var(--navbar-color);
+    background-color: var(--navbar-button-color);
+    border-radius: 5px;
+    padding: 5px 15px;
+    border: 1px solid var(--navbar-button-color);
+}
+
+nav .right a:first-child:hover {
+    color: var(--navbar-button-press-color);
+    border-radius: 5px;
+    padding: 5px 15px;
+    border: 1px solid var(--navbar-button-press-color);
+}
+
+nav .right a:last-child:hover {
+    background-color: var(--navbar-button-press-color);
+    color: var(--navbar-color);
+    border: 1px solid var(--navbar-button-press-color);
+}

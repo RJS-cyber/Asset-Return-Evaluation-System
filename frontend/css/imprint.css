@@ -1,0 +1,120 @@
+/* Imprint Page Styles */
+
+.imprint-section {
+    padding: 90px 5vw 60px;
+    min-height: calc(100vh - 95px - 100px);
+    background: linear-gradient(135deg, var(--background-color) 0%, #e8e8e8 100%);
+}
+
+.imprint-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.imprint-container h1 {
+    font-size: clamp(38px, 6vw, 52px);
+    color: var(--navbar-button-color);
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.imprint-container h1::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    margin: 20px auto 50px;
+    border-radius: 2px;
+}
+
+.imprint-content {
+    background-color: white;
+    padding: clamp(40px, 6vw, 60px);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(17, 33, 62, 0.05);
+}
+
+.imprint-block {
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.imprint-block:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.imprint-block h2 {
+    font-size: clamp(20px, 3vw, 26px);
+    color: var(--navbar-button-color);
+    margin-bottom: 18px;
+    font-weight: 600;
+    position: relative;
+    padding-left: 20px;
+}
+
+.imprint-block h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 60%;
+    background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+    border-radius: 3px;
+}
+
+.imprint-block p {
+    font-size: clamp(15px, 2vw, 17px);
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    padding-left: 20px;
+}
+
+.imprint-block p:last-child {
+    margin-bottom: 0;
+}
+
+.imprint-block a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.imprint-block a:hover {
+    color: var(--navbar-button-color);
+    border-bottom-color: var(--navbar-button-color);
+}
+
+@media (max-width: 768px) {
+    .imprint-section {
+        padding: 60px 4vw 40px;
+    }
+
+    .imprint-content {
+        padding: clamp(25px, 5vw, 40px);
+    }
+
+    .imprint-block {
+        margin-bottom: 30px;
+        padding-bottom: 25px;
+    }
+
+    .imprint-block p {
+        padding-left: 15px;
+    }
+
+    .imprint-block h2 {
+        padding-left: 15px;
+    }
+}

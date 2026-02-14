@@ -18,7 +18,12 @@
             referrerpolicy="no-referrer"
         />
 
-        <link rel="stylesheet" href="css/style.css" />
+        <!-- CSS Modules -->
+        <link rel="stylesheet" href="css/variables.css" />
+        <link rel="stylesheet" href="css/base.css" />
+        <link rel="stylesheet" href="css/navigation.css" />
+        <link rel="stylesheet" href="css/footer.css" />
+        <link rel="stylesheet" href="css/about.css" />
 
         <title>ARES - Über uns</title>
 
@@ -72,11 +77,11 @@
                             <div class="team-icon">
                                 <i class="fas fa-user-tie"></i>
                             </div>
-                            <h3>Max Entwickler</h3>
+                            <h3>Enrico Entwickler</h3>
                             <p class="team-role">Lead Developer</p>
                             <p class="team-description">
                                 Spezialisiert auf Backend-Entwicklung und Finanzalgorithmen.
-                                Mit über 10 Jahren Erfahrung in der Softwareentwicklung bringt Max
+                                Mit über 10 Jahren Erfahrung in der Softwareentwicklung bringt Enrico
                                 tiefgreifende Kenntnisse in Java und Spring Boot mit.
                             </p>
                         </div>
@@ -85,11 +90,11 @@
                             <div class="team-icon">
                                 <i class="fas fa-code"></i>
                             </div>
-                            <h3>Anna Frontend</h3>
+                            <h3>Franca Frontend</h3>
                             <p class="team-role">Frontend Developer</p>
                             <p class="team-description">
                                 Expertin für moderne Web-Technologien und User Experience Design.
-                                Anna sorgt dafür, dass ARES nicht nur funktional, sondern auch
+                                Franca sorgt dafür, dass ARES nicht nur funktional, sondern auch
                                 intuitiv und ansprechend ist.
                             </p>
                         </div>
@@ -98,11 +103,11 @@
                             <div class="team-icon">
                                 <i class="fas fa-chart-line"></i>
                             </div>
-                            <h3>Thomas Analyst</h3>
+                            <h3>Anna Analyst</h3>
                             <p class="team-role">Financial Analyst</p>
                             <p class="team-description">
                                 Finanzexperte mit Schwerpunkt auf Asset-Management und Portfolioanalyse.
-                                Thomas stellt sicher, dass unsere Berechnungen präzise und
+                                Anna stellt sicher, dass unsere Berechnungen präzise und
                                 marktrelevant sind.
                             </p>
                         </div>
@@ -111,11 +116,11 @@
                             <div class="team-icon">
                                 <i class="fas fa-flask"></i>
                             </div>
-                            <h3>Sarah Test</h3>
+                            <h3>Terry Test</h3>
                             <p class="team-role">Quality Assurance</p>
                             <p class="team-description">
                                 Verantwortlich für die Qualitätssicherung und Testing-Strategien.
-                                Sarah garantiert, dass ARES stets zuverlässig und fehlerfrei läuft.
+                                Terry garantiert, dass ARES stets zuverlässig und fehlerfrei läuft.
                             </p>
                         </div>
                     </div>
@@ -189,64 +194,6 @@
                 </div>
             </section>
 
-            <!-- Company History Section -->
-            <section id="history" class="about-section history-section">
-                <div class="about-container">
-                    <h2>Firmengeschichte</h2>
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-marker"></div>
-                            <div class="timeline-content">
-                                <h3>2024 - Die Idee</h3>
-                                <p>
-                                    Während eines Universitätsprojekts erkannten wir die Notwendigkeit
-                                    für ein zugängliches Tool zur Asset-Bewertung. Die Idee für ARES
-                                    (Asset Return Evaluation System) war geboren.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="timeline-item">
-                            <div class="timeline-marker"></div>
-                            <div class="timeline-content">
-                                <h3>2025 - Entwicklung & Testing</h3>
-                                <p>
-                                    Ein Jahr intensiver Entwicklung, in dem wir die Kernfunktionalitäten
-                                    implementierten: Monte-Carlo-Simulationen für Aktien, Anleihen,
-                                    Immobilien und Rohstoffe. Umfangreiche Tests stellten die Genauigkeit
-                                    unserer Berechnungen sicher.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="timeline-item">
-                            <div class="timeline-marker"></div>
-                            <div class="timeline-content">
-                                <h3>2026 - Beta Launch</h3>
-                                <p>
-                                    Der offizielle Beta-Launch von ARES. Die Plattform wird erstmals
-                                    der Öffentlichkeit zugänglich gemacht. Feedback von ersten Nutzern
-                                    hilft uns, das System weiter zu verfeinern und zu optimieren.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="timeline-item">
-                            <div class="timeline-marker"></div>
-                            <div class="timeline-content">
-                                <h3>Zukunft - Expansion</h3>
-                                <p>
-                                    Wir planen die Integration weiterer Asset-Klassen, erweiterte
-                                    Analysefunktionen, Portfolio-Optimierungstools und eine mobile App.
-                                    ARES wird zur umfassenden Plattform für Finanzanalyse und
-                                    Investment-Planung.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             <!-- Thanks Section -->
             <section id="thanks" class="about-section thanks-section">
                 <div class="about-container">
@@ -270,15 +217,6 @@
                             </div>
 
                             <div class="thanks-card">
-                                <i class="fas fa-chalkboard-teacher"></i>
-                                <h3>Unsere Mentoren</h3>
-                                <p>
-                                    Prof. Dr. Schmidt und das gesamte Lehrstuhlteam für wertvolle
-                                    Ratschläge, fachliche Expertise und kontinuierliche Betreuung.
-                                </p>
-                            </div>
-
-                            <div class="thanks-card">
                                 <i class="fas fa-users"></i>
                                 <h3>Beta-Tester</h3>
                                 <p>
@@ -293,15 +231,6 @@
                                 <p>
                                     Den Entwicklern der verwendeten Bibliotheken und Frameworks -
                                     Spring Boot, Chart.js und allen anderen Tools, die ARES ermöglichen.
-                                </p>
-                            </div>
-
-                            <div class="thanks-card">
-                                <i class="fas fa-heart"></i>
-                                <h3>Familie & Freunde</h3>
-                                <p>
-                                    Für die emotionale Unterstützung, Geduld und Motivation während
-                                    der langen Entwicklungsphasen und späten Nächte.
                                 </p>
                             </div>
 

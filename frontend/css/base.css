@@ -1,0 +1,21 @@
+/* Base Styles and Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:'Poppins', sans-serif;
+    background-color: var(--background-color);
+    padding-top: 95px;
+}
+
+a {
+    color: var(--text-color);
+    text-decoration: none;
+}

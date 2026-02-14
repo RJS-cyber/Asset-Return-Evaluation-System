@@ -1,0 +1,55 @@
+/* Under Construction Page Styles */
+
+.under-construction {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 95px - 100px);
+    padding: 60px 20px;
+}
+
+.construction-container {
+    text-align: center;
+    max-width: 600px;
+}
+
+.construction-container h1 {
+    font-size: clamp(32px, 5vw, 42px);
+    color: var(--navbar-button-color);
+    margin-bottom: 40px;
+}
+
+.construction-content {
+    background-color: white;
+    padding: 60px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.construction-icon {
+    font-size: clamp(80px, 15vw, 120px);
+    color: var(--secondary-color);
+    margin-bottom: 30px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.construction-content h2 {
+    font-size: clamp(24px, 4vw, 32px);
+    color: var(--navbar-button-color);
+    margin-bottom: 20px;
+}
+
+.construction-content p {
+    font-size: clamp(16px, 2vw, 20px);
+    color: var(--text-color);
+    margin-bottom: 10px;
+}

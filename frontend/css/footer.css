@@ -1,0 +1,33 @@
+/* Footer Styles */
+footer {
+    background-color: var(--navbar-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(20px, 4vw, 40px);
+    padding: 30px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+footer .footer-btn {
+    color: var(--navbar-button-color);
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: 600;
+    padding: 10px clamp(20px, 3vw, 30px);
+    border-radius: 5px;
+    border: 2px solid var(--navbar-button-color);
+    background-color: var(--navbar-color);
+    transition: all 0.3s ease;
+    text-align: center;
+    white-space: nowrap;
+}
+
+footer .footer-btn:hover {
+    background-color: var(--navbar-button-color);
+    color: var(--navbar-color);
+}
+
+footer .footer-btn i {
+    margin-right: 8px;
+}
