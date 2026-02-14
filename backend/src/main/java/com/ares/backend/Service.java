@@ -120,7 +120,7 @@ public class Service {
     }
 
     public int graphDataYears() {
-        return repository.getYearCount();
+        return getResults().length;
     }
 
     public double graphDataMaxCapital() {

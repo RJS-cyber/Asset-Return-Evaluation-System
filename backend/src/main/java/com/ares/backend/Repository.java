@@ -42,12 +42,11 @@ public class Repository {
 
     // After all results have been stored, convert the nested map to a 2D array for easier access in the frontend
     protected Result[][] getResultsAsArray() {
-        int yearCount = getYearCount();
+        int yearCount = assets.get(0).getYears() + 1;
         int typeCount = amountOfTypes();
         Result[][] resultArray = new Result[yearCount][typeCount];
 
-        int yearsIndex = assets.get(0).getYears() + 1;
-        for (int i = 0; i < yearsIndex; i++) {
+        for (int i = 0; i < yearCount; i++) {
             Map<AssetType, Result> yearResults = getResultsForYear(i);
             int j = 0;
             for (Result result : yearResults.values()) {
@@ -66,11 +65,6 @@ public class Repository {
 
     // ============= Analysis =============
     // ====================================
-
-    // Function for graph dimensions
-    protected int getYearCount() {
-        return resultsMap.size();
-    }
 
     // Function for graph dimensions
     protected double getMaxCapital() {
