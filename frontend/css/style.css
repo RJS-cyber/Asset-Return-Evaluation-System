@@ -89,17 +89,20 @@ nav .right a:last-child:hover {
 .hero {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 90px 60px;
+    justify-content: center;
+    padding: 90px 5vw;
+    gap: clamp(30px, 5vw, 60px);
+    flex-wrap: wrap;
 }
 
 .hero .container {
+    flex: 1 1 300px;
     max-width: 500px;
-    font-size: 22px;
+    font-size: clamp(18px, 2vw, 22px);
 }
 
 .hero .container h1 {
-    font-size: 45px;
+    font-size: clamp(32px, 5vw, 45px);
     margin-bottom: 20px;
     color: var(--navbar-button-color);
 }
@@ -108,18 +111,20 @@ nav .right a:last-child:hover {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    padding-right: 50px;
+    flex: 0 1 auto;
     color: var(--text-color);
-    font-size: 22px;
+    font-size: clamp(18px, 2vw, 22px);
     font-weight: 600;
 }
 
 .hero .links a {
     color: var(--text-color);
-    padding: 10px 60px;
+    padding: 10px clamp(40px, 6vw, 60px);
     border-radius: 50px;
     background-color: var(--button-color);
     border: 1px solid var(--text-color);
+    text-align: center;
+    white-space: nowrap;
 }
 
 .hero .links a:hover {
