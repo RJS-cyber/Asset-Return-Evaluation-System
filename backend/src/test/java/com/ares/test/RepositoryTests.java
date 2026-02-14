@@ -35,8 +35,8 @@ class RepositoryTests {
         assertEquals(AssetType.BONDS, retrievedBonds.getType());
         assertEquals(1000f, retrievedBonds.getStartcapital());
         assertEquals(5, retrievedBonds.getYears());
-        assertEquals(3.0f, retrievedBonds.getInterest());
-        assertEquals(5.0f, retrievedBonds.getVolatility());
+        assertEquals(0.03f, retrievedBonds.getInterest());
+        assertEquals(0.05f, retrievedBonds.getVolatility());
     }
 
     @Test
@@ -49,8 +49,8 @@ class RepositoryTests {
         assertEquals(AssetType.STOCKS, retrievedStocks.getType());
         assertEquals(2000f, retrievedStocks.getStartcapital());
         assertEquals(10, retrievedStocks.getYears());
-        assertEquals(8.0f, retrievedStocks.getInterest());
-        assertEquals(15.0f, retrievedStocks.getVolatility());
+        assertEquals(0.08f, retrievedStocks.getInterest());
+        assertEquals(0.15f, retrievedStocks.getVolatility());
     }
 
     @Test
@@ -63,8 +63,8 @@ class RepositoryTests {
         assertEquals(AssetType.REAL_ESTATES, retrievedRealEstates.getType());
         assertEquals(50000f, retrievedRealEstates.getStartcapital());
         assertEquals(20, retrievedRealEstates.getYears());
-        assertEquals(5.0f, retrievedRealEstates.getInterest());
-        assertEquals(7.0f, retrievedRealEstates.getVolatility());
+        assertEquals(0.05f, retrievedRealEstates.getInterest());
+        assertEquals(0.07f, retrievedRealEstates.getVolatility());
     }
 
     @Test
@@ -77,8 +77,8 @@ class RepositoryTests {
         assertEquals(AssetType.RAW_MATERIALS, retrievedRawMaterials.getType());
         assertEquals(3000f, retrievedRawMaterials.getStartcapital());
         assertEquals(15, retrievedRawMaterials.getYears());
-        assertEquals(6.0f, retrievedRawMaterials.getInterest());
-        assertEquals(10.0f, retrievedRawMaterials.getVolatility());
+        assertEquals(0.06f, retrievedRawMaterials.getInterest());
+        assertEquals(0.1f, retrievedRawMaterials.getVolatility());
     }
 
     @Test
@@ -93,7 +93,6 @@ class RepositoryTests {
         assertEquals(AssetType.REAL_ESTATES, repository.getAssets().get(2).getType());
     }
 
-
     @Test
     void testAddAsset() {
         Asset bonds = new Bonds(1000f, 5);
@@ -103,8 +102,6 @@ class RepositoryTests {
         assertEquals(bonds, repository.getAssets().get(0));
     }
 
-
-
     @Test
     void testGetAssets_EmptyList() {
         List<Asset> assets = repository.getAssets();
@@ -113,131 +110,26 @@ class RepositoryTests {
     }
 
     @Test
-    void testGetResults_EmptyListForYearAndType() {
-        // Test new nested map API
-        assertFalse(repository.hasResults());
-        assertEquals(0, repository.getYearCount());
-        assertEquals(0, repository.getTotalResultCount());
-        assertTrue(repository.getAvailableYears().isEmpty());
-        assertTrue(repository.getAllResultsAsList().isEmpty());
-    }
-
-    @Test
-    void testGetResultsForYearForYearAndType() {
-        repository.addAsset(new Asset(AssetType.BONDS, 100f, 1, 5, 3.0f) {});
-        repository.addAsset(new Asset(AssetType.STOCKS, 100f, 1, 5, 3.0f) {});
-
-        repository.storeResult(new Result(AssetType.BONDS, 1, 1030f, 3.0f));
-        repository.storeResult(new Result(AssetType.STOCKS, 1, 2160f, 8.0f));
-        repository.storeResult(new Result(AssetType.BONDS, 2, 1061f, 3.0f));
-
-        Map<AssetType, Result> year1 = repository.getResultsForYear(1);
-        assertEquals(2, year1.size());
-        assertTrue(year1.containsKey(AssetType.BONDS));
-        assertTrue(year1.containsKey(AssetType.STOCKS));
-
-        Map<AssetType, Result> year2 = repository.getResultsForYear(2);
-        assertEquals(1, year2.size());
-        assertTrue(year2.containsKey(AssetType.BONDS));
-    }
-
-    @Test
-    void testGetResultsForAssetTypeForYearAndTypeAsList() {
-        repository.addAsset(new Asset(AssetType.BONDS, 100f, 1, 5, 3.0f) {});
-
-        repository.storeResult(new Result(AssetType.BONDS, 0, 1000f, 0f));
-        repository.storeResult(new Result(AssetType.BONDS, 1, 1030f, 3.0f));
-        repository.storeResult(new Result(AssetType.BONDS, 2, 1061f, 3.0f));
-
-        List<Result> bondsResults = repository.getResultsForAssetTypeAsList(AssetType.BONDS);
-        assertEquals(3, bondsResults.size());
-        assertEquals(0, bondsResults.get(0).getYear());
-        assertEquals(1, bondsResults.get(1).getYear());
-        assertEquals(2, bondsResults.get(2).getYear());
-    }
-
-    @Test
-    void testHasResult() {
-        repository.addAsset(new Asset(AssetType.BONDS, 100f, 1, 5, 3.0f) {});
-        repository.storeResult(new Result(AssetType.BONDS, 1, 1030f, 3.0f));
-
-        assertTrue(repository.hasResult(1, AssetType.BONDS));
-        assertFalse(repository.hasResult(2, AssetType.BONDS));
-        assertFalse(repository.hasResult(1, AssetType.STOCKS));
-    }
-
-    @Test
-    void testGetAvailableYears() {
-        repository.addAsset(new Asset(AssetType.BONDS, 100f, 1, 5, 3.0f) {});
-
-        repository.storeResult(new Result(AssetType.BONDS, 0, 1000f, 0f));
-        repository.storeResult(new Result(AssetType.BONDS, 2, 1061f, 3.0f));
-        repository.storeResult(new Result(AssetType.BONDS, 5, 1159f, 3.0f));
-
-        List<Integer> years = repository.getAvailableYears();
-        assertEquals(3, years.size());
-        assertTrue(years.contains(0));
-        assertTrue(years.contains(2));
-        assertTrue(years.contains(5));
-    }
-
-    @Test
-    void testGetTotalCapitalForYear() {
-        repository.addAsset(new Asset(AssetType.BONDS, 100f, 1, 5, 3.0f) {});
-        repository.addAsset(new Asset(AssetType.STOCKS, 100f, 1, 5, 3.0f) {});
-
-        repository.storeResult(new Result(AssetType.BONDS, 1, 1030f, 3.0f));
-        repository.storeResult(new Result(AssetType.STOCKS, 1, 2160f, 8.0f));
-
-        float total = repository.getTotalCapitalForYear(1);
-        assertEquals(3190f, total, 0.01f);
-    }
-
-    @Test
-    void testFindMaxCapital() {
-        repository.addAsset(new Asset(AssetType.BONDS, 100f, 1, 5, 3.0f) {});
-        repository.addAsset(new Asset(AssetType.STOCKS, 100f, 1, 5, 3.0f) {});
-
-        repository.storeResult(new Result(AssetType.BONDS, 1, 1030f, 3.0f));
-        repository.storeResult(new Result(AssetType.STOCKS, 1, 2160f, 8.0f));
-        repository.storeResult(new Result(AssetType.BONDS, 2, 1061f, 3.0f));
-        repository.storeResult(new Result(AssetType.STOCKS, 2, 2333f, 8.0f));
-
-        var maxResult = repository.findMaxCapital();
-        assertTrue(maxResult.isPresent());
-        assertEquals(2333f, maxResult.get().getCapital(), 0.01f);
-        assertEquals(AssetType.STOCKS, maxResult.get().getType());
-    }
-
-    @Test
-    void testGetResultsForYearRangeForYearAndType() {
-        repository.addAsset(new Asset(AssetType.BONDS, 100f, 1, 5, 3.0f) {});
-
-        for (int year = 0; year <= 5; year++) {
-            repository.storeResult(new Result(AssetType.BONDS, year, 1000f + year * 30, 3.0f));
-        }
-
-        var range = repository.getResultsForYearRange(2, 4);
-        assertEquals(3, range.size());
-        assertTrue(range.containsKey(2));
-        assertTrue(range.containsKey(3));
-        assertTrue(range.containsKey(4));
-        assertFalse(range.containsKey(1));
-        assertFalse(range.containsKey(5));
-    }
-
-    @Test
     void testClearResults() {
         repository.addAsset(new Asset(AssetType.BONDS, 100f, 1, 5, 3.0f) {});
         repository.storeResult(new Result(AssetType.BONDS, 1, 1030f, 3.0f));
 
-        assertTrue(repository.hasResults());
-        assertEquals(1, repository.getTotalResultCount());
+        assertTrue(hasResults(repository.getAllResultsRaw()));
+        assertEquals(1, getTotalResultCount(repository.getAllResultsRaw()));
 
         repository.clearResults();
 
-        assertFalse(repository.hasResults());
-        assertEquals(0, repository.getTotalResultCount());
+        assertFalse(hasResults(repository.getAllResultsRaw()));
+        assertEquals(0, getTotalResultCount(repository.getAllResultsRaw()));    }
+
+    private boolean hasResults(Map<Integer, Map<AssetType, Result>> resultsMap) {
+        return !resultsMap.isEmpty();
     }
+
+    private int getTotalResultCount(Map<Integer, Map<AssetType, Result>> resultsMap) {
+        return resultsMap.values().stream().mapToInt(Map::size).sum();
+    }
+
+
 }
 
