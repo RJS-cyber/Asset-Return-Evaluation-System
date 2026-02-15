@@ -24,20 +24,6 @@
     letter-spacing: -0.5px;
 }
 
-.imprint-container h1::after {
-    content: "";
-    display: block;
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(
-        90deg,
-        var(--primary-color),
-        var(--secondary-color)
-    );
-    margin: 20px auto 50px;
-    border-radius: 2px;
-}
-
 .imprint-content {
     background-color: white;
     padding: clamp(40px, 6vw, 60px);
@@ -65,22 +51,6 @@
     font-weight: 600;
     position: relative;
     padding-left: 20px;
-}
-
-.imprint-block h2::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 6px;
-    height: 60%;
-    background: linear-gradient(
-        180deg,
-        var(--primary-color),
-        var(--secondary-color)
-    );
-    border-radius: 3px;
 }
 
 .imprint-block p {
