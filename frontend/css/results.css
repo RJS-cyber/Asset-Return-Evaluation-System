@@ -133,45 +133,9 @@
 }
 
 .development-cell.positive {
-    color: #4CAF50;
+    color: #4caf50;
 }
 
 .development-cell.negative {
     color: #f44336;
-}
-
-/* Responsive Design for Results Page */
-@media (max-width: 1200px) {
-    .tables-container {
-        gap: 20px;
-    }
-
-    .table-wrapper {
-        min-width: 250px;
-        max-width: 300px;
-    }
-}
-
-@media (max-width: 768px) {
-    .results-section {
-        padding: 30px 20px;
-    }
-
-    .results-container h1 {
-        font-size: 32px;
-    }
-
-    .graph-container {
-        padding: 20px;
-    }
-
-    .tables-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .table-wrapper {
-        max-width: 100%;
-        width: 100%;
-    }
 }

@@ -1,7 +1,7 @@
 /* About Page Styles */
 
 .about-hero {
-    background: linear-gradient(135deg, var(--navbar-button-color) 0%, #1a2d4d 100%);
+    background: var(--navbar-button-color);
     padding: 120px 5vw 80px;
     text-align: center;
     color: white;
@@ -47,16 +47,6 @@
     position: relative;
 }
 
-.about-container h2::after {
-    content: '';
-    display: block;
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    margin: 20px auto 0;
-    border-radius: 2px;
-}
-
 /* Team Section */
 .team-grid {
     display: grid;
@@ -70,26 +60,15 @@
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
     border: 1px solid rgba(17, 33, 62, 0.05);
 }
 
 .team-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-}
-
-.team-icon {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 25px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 36px;
-    color: white;
 }
 
 .team-card h3 {
@@ -120,12 +99,11 @@
 }
 
 .hire-content {
-    background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(255, 152, 0, 0.1));
+    background: #e8e8e8;
     padding: 30px 35px;
     border-radius: 12px;
     text-align: center;
-    border: 2px solid var(--primary-color);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 2px solid var(--navbar-button-color);
     max-width: 700px;
     margin: 0 auto;
 }
@@ -134,14 +112,13 @@
     width: 60px;
     height: 60px;
     margin: 0 auto 15px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: var(--navbar-button-color);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 28px;
     color: white;
-    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
 }
 
 .hire-content h3 {
@@ -166,17 +143,15 @@
     font-size: clamp(16px, 2vw, 18px);
     font-weight: 600;
     color: white;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: var(--navbar-button-color);
     border: none;
     border-radius: 50px;
     text-decoration: none;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
 }
 
 .hire-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
 }
 
 .hire-btn i {
@@ -195,7 +170,7 @@
     padding: 40px 35px;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    border-left: 5px solid var(--primary-color);
+    border-left: 5px solid var(--navbar-button-color);
     transition: all 0.3s ease;
 }
 
@@ -203,12 +178,15 @@
     border-left-color: var(--secondary-color);
     transform: translateX(5px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    .mission-icon {
+        background: var(--secondary-color);
+    }
 }
 
 .mission-icon {
     width: 70px;
     height: 70px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: var(--navbar-button-color);
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -261,7 +239,9 @@
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
     border: 1px solid rgba(17, 33, 62, 0.05);
 }
 
@@ -287,66 +267,4 @@
     font-size: clamp(14px, 2vw, 15px);
     color: #555;
     line-height: 1.7;
-}
-
-.thanks-outro {
-    text-align: center;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    padding: 40px 30px;
-    border-radius: 12px;
-    color: white;
-}
-
-.thanks-outro p {
-    font-size: clamp(16px, 2.5vw, 18px);
-    line-height: 1.8;
-    margin-bottom: 15px;
-}
-
-.thanks-outro p:last-child {
-    margin-bottom: 0;
-}
-
-.thanks-outro strong {
-    font-size: clamp(18px, 3vw, 22px);
-}
-
-/* Responsive Design for About Page */
-@media (max-width: 768px) {
-    .about-section {
-        padding: 60px 4vw;
-    }
-
-    .team-grid {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-
-    .mission-content {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-
-    .timeline::before {
-        left: 20px;
-    }
-
-    .timeline-item {
-        flex-direction: row !important;
-        padding-left: 60px;
-    }
-
-    .timeline-marker {
-        left: 20px;
-    }
-
-    .timeline-content {
-        width: 100%;
-        margin: 0 !important;
-    }
-
-    .thanks-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
 }
