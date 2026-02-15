@@ -21,16 +21,3 @@ public enum AssetType {
     public int getIndexId() {
         return indexId;
     }
-
-    // Deprecated: amountOfTypes in Repository should be used instead
-    @Deprecated
-    static public int getMaxTyes() {
-        return values().length;
-    }
-
-    // Deprecated: Use getTypeId() and getIndexId() instead
-    @Deprecated
-    public String getId() {
-        return "AssetType:" + typeId + "_ResultIndex:" + indexId;
-    }
-}

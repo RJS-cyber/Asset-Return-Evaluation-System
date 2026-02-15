@@ -1,5 +1,7 @@
 package com.ares.test;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import com.ares.backend.AssetType;
 import com.ares.backend.Repository;
 import com.ares.backend.model.Asset;
@@ -8,13 +10,10 @@ import com.ares.backend.model.RawMaterials;
 import com.ares.backend.model.RealEstates;
 import com.ares.backend.model.Result;
 import com.ares.backend.model.Stocks;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import java.util.List;
 import java.util.Map;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 class RepositoryTests {
 
@@ -90,7 +89,10 @@ class RepositoryTests {
         assertEquals(3, repository.getAssets().size());
         assertEquals(AssetType.BONDS, repository.getAssets().get(0).getType());
         assertEquals(AssetType.STOCKS, repository.getAssets().get(1).getType());
-        assertEquals(AssetType.REAL_ESTATES, repository.getAssets().get(2).getType());
+        assertEquals(
+            AssetType.REAL_ESTATES,
+            repository.getAssets().get(2).getType()
+        );
     }
 
     @Test
@@ -110,26 +112,28 @@ class RepositoryTests {
     }
 
     @Test
-    void testClearResults() {
+    void testClearRepo() {
         repository.addAsset(new Asset(AssetType.BONDS, 100f, 1, 5, 3.0f) {});
         repository.storeResult(new Result(AssetType.BONDS, 1, 1030f, 3.0f));
 
         assertTrue(hasResults(repository.getAllResultsRaw()));
         assertEquals(1, getTotalResultCount(repository.getAllResultsRaw()));
 
-        repository.clearResults();
+        repository.clearRepo();
 
         assertFalse(hasResults(repository.getAllResultsRaw()));
-        assertEquals(0, getTotalResultCount(repository.getAllResultsRaw()));    }
+        assertEquals(0, getTotalResultCount(repository.getAllResultsRaw()));
+    }
 
-    private boolean hasResults(Map<Integer, Map<AssetType, Result>> resultsMap) {
+    private boolean hasResults(
+        Map<Integer, Map<AssetType, Result>> resultsMap
+    ) {
         return !resultsMap.isEmpty();
     }
 
-    private int getTotalResultCount(Map<Integer, Map<AssetType, Result>> resultsMap) {
+    private int getTotalResultCount(
+        Map<Integer, Map<AssetType, Result>> resultsMap
+    ) {
         return resultsMap.values().stream().mapToInt(Map::size).sum();
     }
-
-
 }
-
