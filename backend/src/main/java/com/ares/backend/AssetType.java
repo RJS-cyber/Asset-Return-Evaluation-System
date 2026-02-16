@@ -21,3 +21,4 @@ public enum AssetType {
     public int getIndexId() {
         return indexId;
     }
+}
