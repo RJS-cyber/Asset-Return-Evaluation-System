@@ -6,6 +6,8 @@ import com.ares.backend.model.RawMaterials;
 import com.ares.backend.model.RealEstates;
 import com.ares.backend.model.Result;
 import com.ares.backend.model.Stocks;
+import com.ares.backend.util.AssetType;
+
 import java.util.List;
 import java.util.Random;
 

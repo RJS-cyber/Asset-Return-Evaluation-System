@@ -2,7 +2,7 @@ package com.ares.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.ares.backend.AssetType;
+import com.ares.backend.util.AssetType;
 import org.junit.jupiter.api.Test;
 
 class AssetTypeTests {

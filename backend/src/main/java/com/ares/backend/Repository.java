@@ -3,7 +3,8 @@ package com.ares.backend;
 import com.ares.backend.model.Asset;
 import com.ares.backend.model.Result;
 import java.util.*;
-import java.util.stream.Collectors;
+
+import com.ares.backend.util.AssetType;
 import lombok.Getter;
 
 public class Repository {

@@ -1,6 +1,6 @@
 package com.ares.test;
 
-import com.ares.backend.AssetType;
+import com.ares.backend.util.AssetType;
 import com.ares.backend.model.*;
 import org.junit.jupiter.api.Test;
 

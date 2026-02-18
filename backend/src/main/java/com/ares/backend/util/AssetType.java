@@ -1,4 +1,4 @@
-package com.ares.backend;
+package com.ares.backend.util;
 
 public enum AssetType {
     BONDS("Bonds", 0),

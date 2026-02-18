@@ -1,6 +1,6 @@
 package com.ares.backend.model;
 
-import com.ares.backend.AssetType;
+import com.ares.backend.util.AssetType;
 
 public class Bonds extends Asset {
 
