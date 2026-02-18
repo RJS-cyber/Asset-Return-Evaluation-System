@@ -6,29 +6,6 @@ The Asset Return Evaluation System (ARES) is a Java-based analytical application
 
 The primary objective of this project is to provide a structured and intuitive tool for analyzing investment returns, while demonstrating fundamental software engineering concepts such as user input handling, financial computation, data visualization, and modular program design.
 
-# Roadmap
-- Phase 1: Backend Architecture
-  - Unit-Tests
-  - Asset Classes
-  - Object-Generation
-- Phase 2: Frontend Implementation
-  - Until API/Backend is needed
-- Phase 3: Backend Implementation & RESTful API
-  - Systemcontroller
-  - Systemservice
-  - Calculationservice: nextGaussian
-- Phase 4: Data Visualization & Quality of Life
-  - Page 2, Underneath the Graph next to the Table: Small Box with a "+" hitting turns the plus by 45° and lets the user add another table below for comparison
-- Phase 5: UI Polish
-
-# Start Application
-## Requirements
-- Java 17
-- Maven 3.8+
-## Running the Application
-- backend: mvn spring-boot:run
-- frontend: npm run dev
-
 # Requirements
 (original formulation of the minimum requirement of the assignment)
 
@@ -45,6 +22,29 @@ Eine (nicht verpflichtende) Erweiterung des Funktionsumfangs ist z.B. durch folg
 - Als Benutzer möchte ich die Simulation über eine grafische Benutzeroberfläche (GUI) durchführen können, damit die Eingabe und Visualisierung der Ergebnisse einfacher und ansprechender ist.
 - Als Benutzer möchte ich, dass die Anwendung die Renditeentwicklung in einem Diagramm darstellt, damit ich die Ergebnisse visuell nachvollziehen kann.
 - Als Benutzer möchte ich historische Daten über eine Webschnittstelle abfragen können, damit ich die Entwicklung von Anlageklassen retrospektiv analysieren und mit der Simulation vergleichen kann.
+
+# Roadmap
+- Phase 1: Backend Architecture
+  - Unit-Tests
+  - Asset Classes
+  - Object-Generation
+- Phase 2: Frontend Implementation
+  - Until API/Backend is needed
+- Phase 3: Backend Implementation & RESTful API
+  - Systemcontroller
+  - Systemservice
+  - Calculationservice: nextGaussian
+- Phase 4: Data Visualization & Quality of Life
+  - Page 2, Underneath the Graph next to the Table: Small Box with a "+" hitting turns the plus by 45° and lets the user add another table below for comparison
+- Phase 5: UI Polish
+
+# Historical Data
+The historical data used by ARES is based on the following sources:
+- **Stocks**: Dax - https://www.investing.com/indices/germany-30
+- **Bonds**: Bond Yields: 10-Year for Germany - https://fred.stlouisfed.org/series/IRLTLT01DEM156N
+- **Raw Materials**: Producer Price Index - https://fred.stlouisfed.org/series/PPIACO
+- **Real Estate**: House Price Index - https://fred.stlouisfed.org/series/USSTHPI
+
 
 # Scope and Limitations
 This project is intended for academic and instructional purposes. It does not account for real-world market volatility, transaction costs, inflation, or risk factors beyond the simplified asset models. Consequently, the results produced by ARES should not be interpreted as financial advice.
