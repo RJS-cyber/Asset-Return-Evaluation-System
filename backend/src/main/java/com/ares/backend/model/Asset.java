@@ -1,6 +1,6 @@
 package com.ares.backend.model;
 
-import com.ares.backend.util.AssetType;
+import com.ares.backend.AssetType;
 import lombok.Getter;
 
 public abstract class Asset {

@@ -2,7 +2,7 @@ package com.ares.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.ares.backend.util.AssetType;
+import com.ares.backend.AssetType;
 import com.ares.backend.Repository;
 import com.ares.backend.model.Asset;
 import com.ares.backend.model.Bonds;

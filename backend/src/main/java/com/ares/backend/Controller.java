@@ -3,7 +3,6 @@ package com.ares.backend;
 import com.ares.backend.dto.ResponseData;
 import com.ares.backend.dto.SendData;
 import com.ares.backend.model.Result;
-import com.ares.backend.util.AssetType;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

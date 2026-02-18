@@ -1,6 +1,6 @@
 package com.ares.backend.dto;
 
-import com.ares.backend.util.AssetType;
+import com.ares.backend.AssetType;
 import lombok.Data;
 
 import java.util.ArrayList;
