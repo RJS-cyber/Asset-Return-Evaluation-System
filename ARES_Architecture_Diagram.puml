@@ -20,50 +20,66 @@ skinparam class {
 ' ==================== FRONTEND PACKAGE ====================
 package "Frontend" <<frontend>> {
 
-    ' HTML Pages
-    rectangle "index.html\n(Home)" as index
-    rectangle "about.html\n(About Us)" as about
-    rectangle "results.html\n(Results)" as results
-    rectangle "future-projects.html\n(Future Projects)" as future
-    rectangle "imprint.html\n(Imprint)" as imprint
+    rectangle HTML
+    rectangle CSS
+    rectangle JavaScript
 
-    ' Navigation relationships between HTML pages
-    index -right-> about : "Mehr über uns"
-    index --> results : "Show Results"
-    results --> index : "Zurück"
-    index -down-> future : "Footer Link"
-    index -down-> imprint : "Footer Link"
-    about --> index : "Back to Home"
-    future --> index : "Back to Home"
-    imprint --> index : "Back to Home"
+    ' Frontend internal connections
+    CSS --> HTML : "styles"
+    HTML --> JavaScript : "uses"
+}
+
+' ==================== DTOs (Between Frontend and Backend) ====================
+package "dto" {
+    rectangle SendData [
+        SendData
+        ....
+        - years: int
+        - amount: double
+        - assetTypes: ArrayList~AssetType~
+        ....
+        + getter
+    ]
+
+    rectangle ResponseData [
+        ResponseData
+        ....
+        - resultsArray: Result[][]
+        - maxYears: int
+        - maxCapital: double
+        - assetTypes: List~String~
+        ....
+        + getter
+    ]
 }
 
 ' ==================== BACKEND PACKAGE ====================
 package "Backend" <<backend>> {
 
-    ' DTOs Package
-    package "dto" {
-        rectangle SendData [
-            SendData
-            ....
-            - years: int
-            - amount: double
-            - assetTypes: ArrayList~AssetType~
-            ....
-            + getters/setters
-        ]
+    ' Application Entry Point
+    rectangle Application [
+        <<SpringBootApplication>>
+        Application
+        ....
+        + main(String[]): void
+    ]
 
-        rectangle ResponseData [
-            ResponseData
-            ....
-            - resultsArray: Result[]
-            - maxYears: int
-            - maxCapital: double
-            - assetTypes: List~String~
-            ....
-            + getters/setters
-        ]
-    }
+    ' AssetType Enum
+    rectangle AssetType [
+        <<enumeration>>
+        AssetType
+        ....
+        BONDS(typeId "Bonds", indexId 0)
+        RAW_MATERIALS(typeId "Raw-Materials", indexId 1)
+        REAL_ESTATES(typeId "Real-Estates", indexId 2)
+        STOCKS(typeId "Stocks", indexId 3)
+        ....
+        - typeId: String
+        - indexId: int
+        ....
+        + getTypeId(): String
+        + getIndexId(): int
+    ]
 
     ' Controller Layer
     rectangle Controller [
@@ -71,7 +87,7 @@ package "Backend" <<backend>> {
         ....
         - service: Service
         ....
-        + calculate(SendData): ResponseEntity~ResponseData~
+        + calculate(@RequestBody SendData): ResponseEntity~ResponseData~
     ]
 
     ' Service Layer
@@ -81,28 +97,31 @@ package "Backend" <<backend>> {
         - repository: Repository
         - random: Random
         ....
-        + storeData(years, amount, assetTypes): void
+        + storeData(int, double, AssetType): void
         + simulation(): void
         + getResults(): Result[]
         + graphDataYears(): int
         + graphDataMaxCapital(): double
-        - createAssetByType(): Asset
-        - calculation(): Result
+        - createAssetByType(AssetType, double, int): Asset
+        - calculation(Result, Asset, int, Random): Result
     ]
 
     ' Repository Layer
     rectangle Repository [
         Repository
         ....
-        - assets: List~Asset~
+        - assets: ArrayList~Asset~
         - resultsMap: Map~Integer, Map~AssetType, Result~~
         ....
         + addAsset(Asset): void
         + storeResult(Result): void
         + clearRepo(): void
-        + getResultsAsArray(): Result[]
+        + getResultForYearAndType(int, AssetType): Result
+        + getResultsAsArray(): Result[][]
+        + getAllResultsRaw(): Map~Integer, Map~AssetType, Result~~
         + getMaxCapital(): double
-        + getResultForYearAndType(): Result
+        - getResultsForYear(int): Map~AssetType, Result~
+        - amountOfTypes(): int
     ]
 
     ' Model Package
@@ -117,40 +136,51 @@ package "Backend" <<backend>> {
             - interest: float
             - volatility: float
             ....
-            + getters
+            + getType(): AssetType
+            + getStartcapital(): double
+            + getYears(): int
+            + getInterest(): float
+            + getVolatility(): float
         ]
 
         rectangle Bonds [
             Bonds
             ....
-            + Bonds(startcapital, years)
+            + Bonds(double, int)
         ]
 
         rectangle Stocks [
             Stocks
             ....
-            + Stocks(startcapital, years)
+            + Stocks(double, int)
         ]
 
         rectangle RawMaterials [
             RawMaterials
             ....
-            + RawMaterials(startcapital, years)
+            + RawMaterials(double, int)
         ]
 
         rectangle RealEstates [
             RealEstates
             ....
-            + RealEstates(startcapital, years)
+            + RealEstates(double startcapital, int years)
         ]
 
         rectangle Result [
+            <<record>>
             Result
             ....
             - type: AssetType
             - year: int
             - capital: double
             - development: double
+            ....
+            + Result(AssetType, int, double, double)
+            + type(): AssetType
+            + year(): int
+            + capital(): double
+            + development(): double
         ]
 
         ' Inheritance relationships
@@ -161,46 +191,39 @@ package "Backend" <<backend>> {
     }
 
     ' Backend internal relationships
-    Controller --> SendData : "receives"
-    Controller --> ResponseData : "returns"
+    Application --> Service : "starts/initializes"
+
     Controller --> Service : "uses"
 
     Service --> Repository : "uses"
     Service --> Asset : "creates"
     Service --> Result : "creates"
+    Service --> AssetType : "uses"
 
     Repository --> Asset : "stores"
     Repository --> Result : "stores in\nresultsMap"
     Repository --> Result : "returns as\nResult[]"
+
+    Asset --> AssetType : "has type"
+    Result --> AssetType : "has type"
 }
 
 ' ==================== FRONTEND-BACKEND COMMUNICATION ====================
-index -[#blue,bold]-> Controller : "POST /api/ares/calculate\n(SendData)"
-Controller -[#blue,bold]-> results : "ResponseData\n(JSON)"
+JavaScript -[#blue,bold]-> SendData : "prepares data"
+SendData -[#blue,bold]-> Controller : "POST /api/ares/calculate"
+Controller -[#blue,bold]-> ResponseData : "returns"
+ResponseData -[#blue,bold]-> JavaScript : "receives data"
 
 ' Legend
 legend right
     |= Component |= Description |
-    | **Frontend** | HTML pages with user interface |
+    | **Frontend** | HTML pages with CSS and JS |
     | **Backend** | Spring Boot REST API |
     | **Controller** | REST endpoints for communication |
-    | **Service** | Business logic & simulation |
-    | **Repository** | Data storage (in-memory) |
+    | **Service** | Business logic & Simulation |
+    | **Repository** | Data storage |
     | **DTOs** | Data Transfer Objects |
-    | **Model** | Domain entities |
+    | **Model** | Data Carrier |
 endlegend
-
-note top of Controller
-    REST Controller
-    Endpoint: /api/ares/calculate
-    Method: POST
-    Handles asset calculation requests
-end note
-
-note top of Repository
-    In-memory database
-    Stores Assets and Results
-    Uses nested Map structure
-end note
 
 @enduml
