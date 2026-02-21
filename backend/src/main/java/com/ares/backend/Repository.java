@@ -50,8 +50,10 @@ public class Repository {
 
         for (int i = 0; i < yearCount; i++) {
             Map<AssetType, Result> yearResults = getResultsForYear(i);
-            for(int j = 0; j < yearResults.size(); j++){
-                resultArray[i][j] = yearResults.get(AssetType.values()[j]);
+            int j = 0;
+            for (Result result : yearResults.values()) {
+                resultArray[i][j] = result;
+                j++;
             }
         }
         return resultArray;
