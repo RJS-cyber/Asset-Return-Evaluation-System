@@ -34,8 +34,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         if (!amount || amount < 0) {
-            showMessage('Bitte geben Sie einen gültigen Betrag ein (mindestens 0).', 'error');
+            showMessage('Bitte geben Sie einen gültigen Betrag ein (mindestens 0,01).', 'error');
             return;
+        }
+
+        if (!amount || amount == 0) {
+             showMessage('Bitte geben Sie einen gültigen Betrag ein (mindestens 0,01).', 'error');
+             return;
         }
 
         if (selectedAssets.size === 0) {
