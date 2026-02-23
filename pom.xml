@@ -11,6 +11,8 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
+    <packaging>pom</packaging>
+
     <groupId>org.ares</groupId>
     <artifactId>ares</artifactId>
     <version>1.0</version>
