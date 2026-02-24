@@ -35,7 +35,7 @@ class RepositoryTests {
         assertEquals(1000f, retrievedBonds.getStartcapital());
         assertEquals(5, retrievedBonds.getYears());
         assertEquals(0.03f, retrievedBonds.getInterest());
-        assertEquals(0.05f, retrievedBonds.getVolatility());
+        assertEquals(0.02f, retrievedBonds.getVolatility());
     }
 
     @Test
@@ -49,7 +49,7 @@ class RepositoryTests {
         assertEquals(2000f, retrievedStocks.getStartcapital());
         assertEquals(10, retrievedStocks.getYears());
         assertEquals(0.08f, retrievedStocks.getInterest());
-        assertEquals(0.15f, retrievedStocks.getVolatility());
+        assertEquals(0.12f, retrievedStocks.getVolatility());
     }
 
     @Test
@@ -62,8 +62,8 @@ class RepositoryTests {
         assertEquals(AssetType.REAL_ESTATES, retrievedRealEstates.getType());
         assertEquals(50000f, retrievedRealEstates.getStartcapital());
         assertEquals(20, retrievedRealEstates.getYears());
-        assertEquals(0.05f, retrievedRealEstates.getInterest());
-        assertEquals(0.07f, retrievedRealEstates.getVolatility());
+        assertEquals(0.06f, retrievedRealEstates.getInterest());
+        assertEquals(0.04f, retrievedRealEstates.getVolatility());
     }
 
     @Test
@@ -76,8 +76,8 @@ class RepositoryTests {
         assertEquals(AssetType.RAW_MATERIALS, retrievedRawMaterials.getType());
         assertEquals(3000f, retrievedRawMaterials.getStartcapital());
         assertEquals(15, retrievedRawMaterials.getYears());
-        assertEquals(0.06f, retrievedRawMaterials.getInterest());
-        assertEquals(0.1f, retrievedRawMaterials.getVolatility());
+        assertEquals(0.05f, retrievedRawMaterials.getInterest());
+        assertEquals(0.09f, retrievedRawMaterials.getVolatility());
     }
 
     @Test

@@ -1,11 +1,11 @@
 package com.ares.test;
 
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import com.ares.backend.AssetType;
 import com.ares.backend.model.*;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ModelTests {
 
@@ -15,7 +15,7 @@ class ModelTests {
         assertEquals(1000f, bonds.getStartcapital());
         assertEquals(5, bonds.getYears());
         assertEquals(0.03f, bonds.getInterest());
-        assertEquals(0.05f, bonds.getVolatility());
+        assertEquals(0.02f, bonds.getVolatility());
         assertEquals(AssetType.BONDS, bonds.getType());
     }
 
@@ -25,7 +25,7 @@ class ModelTests {
         assertEquals(2000f, stocks.getStartcapital());
         assertEquals(10, stocks.getYears());
         assertEquals(0.08f, stocks.getInterest());
-        assertEquals(0.15f, stocks.getVolatility());
+        assertEquals(0.12f, stocks.getVolatility());
         assertEquals(AssetType.STOCKS, stocks.getType());
     }
 
@@ -34,8 +34,8 @@ class ModelTests {
         RealEstates realEstates = new RealEstates(50000f, 20);
         assertEquals(50000f, realEstates.getStartcapital());
         assertEquals(20, realEstates.getYears());
-        assertEquals(0.05f, realEstates.getInterest());
-        assertEquals(0.07f, realEstates.getVolatility());
+        assertEquals(0.06f, realEstates.getInterest());
+        assertEquals(0.04f, realEstates.getVolatility());
         assertEquals(AssetType.REAL_ESTATES, realEstates.getType());
     }
 
@@ -44,8 +44,8 @@ class ModelTests {
         RawMaterials rawMaterials = new RawMaterials(3000f, 15);
         assertEquals(3000f, rawMaterials.getStartcapital());
         assertEquals(15, rawMaterials.getYears());
-        assertEquals(0.06f, rawMaterials.getInterest());
-        assertEquals(0.1f, rawMaterials.getVolatility());
+        assertEquals(0.05f, rawMaterials.getInterest());
+        assertEquals(0.09f, rawMaterials.getVolatility());
         assertEquals(AssetType.RAW_MATERIALS, rawMaterials.getType());
     }
 
