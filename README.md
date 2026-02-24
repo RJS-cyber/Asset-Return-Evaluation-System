@@ -1,5 +1,13 @@
 # Asset Return Evaluation System (ARES)
 ARES is the result of an assignment from my university class KdP.
+- Start the application by running either:
+  - the Main.java file - `backend/src/main/java/com/ares/backend/Application.java`
+  - or from ARES-root:
+    ```bash
+    mvn spring-boot:run -pl backend
+    ```
+- The open the file `frontend/index.html`
+
 
 # Design and Objectives
 The Asset Return Evaluation System (ARES) is a Java-based analytical application designed to evaluate and compare the profitability of different financial assets over a user-defined investment horizon. The system enables users to model investment outcomes by specifying an initial capital amount, an investment duration in years, and one or more predefined asset classes. Based on these inputs, ARES calculates and visually presents the comparative performance of the selected assets.
