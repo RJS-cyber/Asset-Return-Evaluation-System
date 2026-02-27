@@ -2,7 +2,7 @@
 ARES is the result of an assignment from my university class KdP.
 
 Start the application by running either:
-- On Linux:
+- On Linux/MacOS:
   ```bash
   ./start.sh
   ```
