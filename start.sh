@@ -2,4 +2,4 @@
 
 echo "Starting ARES..."
 
-mvn spring-boot:run -pl backend
+bash start_backend.sh & start_frontend.sh

@@ -1,12 +1,14 @@
 # Asset Return Evaluation System (ARES)
 ARES is the result of an assignment from my university class KdP.
-- Start the application by running either:
-  - the Main.java file - `backend/src/main/java/com/ares/backend/Application.java`
-  - or from ARES-root:
-    ```bash
-    mvn spring-boot:run -pl backend
-    ```
-- The open the file `frontend/index.html`
+
+Start the application by running either:
+- On Linux:
+  ```bash
+  ./start.sh
+  ```
+- On Windows:
+  - run the Main.java file - `backend/src/main/java/com/ares/backend/Application.java`
+  - Then open the file `frontend/index.html`
 
 
 # Design and Objectives
