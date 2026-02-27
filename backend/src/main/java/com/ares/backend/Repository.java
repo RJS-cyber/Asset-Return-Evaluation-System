@@ -43,7 +43,7 @@ public class Repository {
 
     // After all results have been stored, convert the nested map to a 2D array for easier access in the frontend
     protected Result[][] getResultsAsArray() {
-        int yearCount = assets.get(0).getYears() + 1;
+        int yearCount = assets.getFirst().getYears() + 1;
         int typeCount = amountOfTypes();
         Result[][] resultArray = new Result[yearCount][typeCount];
 
